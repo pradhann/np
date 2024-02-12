@@ -6,15 +6,15 @@ import Link from 'next/link'; // Importing Link from Next.js (not MUI)
 const socials = [
   {
     Icon: FaTwitter,
-    href: 'https://twitter.com/chronark_',
+    href: 'https://twitter.com/nripeshpradhan',
     label: 'Twitter',
     handle: '@nripeshpradhan',
   },
   {
     Icon: FaEnvelope,
-    href: 'mailto:nripeshpradhan@gmail.com',
+    href: 'mailto:dev@gmail.com',
     label: 'Email',
-    handle: 'dev@chronark.com',
+    handle: 'npradhan@chippercash.com',
   },
   {
     Icon: FaGithub,

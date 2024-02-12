@@ -9,7 +9,7 @@
 }
 
 .social-item {
-  @apply border-2 border-gray-800 flex items-center justify-center transition-opacity duration-300 opacity-75;
+  @apply border-2 border-gray-800 flex items-center justify-center transition-opacity duration-300 opacity-60;
 }
 
 .social-item:hover {

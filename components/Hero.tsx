@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ReactElement, useContext, useRef } from 'react';
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
 import { ScrollContext } from './Providers/ScrollProvider';
+import MainLayout from './layouts/MainLayout';
 
 export default function Hero(): ReactElement {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -17,6 +18,7 @@ export default function Hero(): ReactElement {
   }
 
   return (
+    <MainLayout>
     <div className="min-h-screen flex flex-col items-center justify-start pt-0">
       <div className="container mx-auto max-w-5xl flex flex-col lg:flex-row items-center justify-between gap-10 py-10 px-4 lg:px-0">
         <div className="flex-1 space-y-6 text-center lg:text-left">
@@ -54,5 +56,6 @@ export default function Hero(): ReactElement {
         </div>
       </motion.div>
     </div>
+    </MainLayout>
   );
 }
