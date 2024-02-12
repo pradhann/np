@@ -11,18 +11,20 @@ Contributing to np.com is simple, here are ways you can help:
 This section guides you through submitting a bug report for np.com. Following these guidelines helps maintainers and the community understand your report.
 
 **Before Submitting A Bug Report**
+
 - Check the documentation for a list of common questions and problems.
 - Ensure the bug was not already reported by searching on GitHub under [Issues](https://github.com/pradhann/np/issues).
 
 **How Do I Submit A Good Bug Report?**
 Bugs are tracked as GitHub issues. Explain the problem and include additional details to help maintainers reproduce the problem:
+
 - Use a clear and descriptive title.
 - Describe the exact steps to reproduce the problem.
 - Provide specific examples to demonstrate the steps.
 
 ### Feature Requests
 
-Feature requests are welcome. But take a moment to find out whether your idea fits with the scope and aims of the project. It's up to *you* to make a strong case to convince the project's developers of the merits of this feature.
+Feature requests are welcome. But take a moment to find out whether your idea fits with the scope and aims of the project. It's up to _you_ to make a strong case to convince the project's developers of the merits of this feature.
 
 ### Pull Requests
 

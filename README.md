@@ -20,7 +20,7 @@ Build your next project with `np.com` - a high-performance website template usin
 
    ```bash
    git clone git@github.com:pradhann/np.git
-    ```
+   ```
 
 2. Change directory
 
@@ -31,7 +31,7 @@ cd np
 3. Install dependencies packages
 
 ```bash
-npm install 
+npm install
 ```
 
 4. Run the development server
@@ -47,7 +47,6 @@ We welcome contributions to np.com! Whether it's submitting bug reports, request
 Please check out our [Contributing Guidelines](CONTRIBUTING.md) for more details on how to submit contributions, coding standards, and how we handle pull requests.
 
 Don't forget to give the project a star! Thanks again!
-
 
 # 🙏 Acknowledgements
 

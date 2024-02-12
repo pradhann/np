@@ -1,7 +1,6 @@
 import Link from '@/components/Link';
 import SectionContainer from '@/components/SectionContainer';
 
-
 export default function FourZeroFour() {
   return (
     <SectionContainer>
