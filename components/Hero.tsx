@@ -5,7 +5,6 @@ import { ReactElement, useContext, useRef } from 'react';
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
 import { ScrollContext } from './Providers/ScrollProvider';
 import MainLayout from './layouts/MainLayout';
-import Image from 'next/image';
 
 export default function Hero(): ReactElement {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -34,7 +33,7 @@ export default function Hero(): ReactElement {
             </p>
           </div>
           <div className="flex-1 flex justify-center lg:justify-end">
-            <Image
+            <img
               alt="Nripesh Pradhan"
               className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full object-cover"
               src="static/images/profile_pic.png"
