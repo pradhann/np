@@ -32,7 +32,7 @@ export default function Projects() {
           />
         </motion.div>
       ))}
-      {breakpoint === 'desktop' && <ProjectPreview modal={modal} projects={projects} />}
+      {/* {breakpoint === 'desktop' && <ProjectPreview modal={modal} projects={projects} />} */}
     </>
   );
 }
