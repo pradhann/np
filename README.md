@@ -1,78 +1,66 @@
-# dalelarroder.com ⚡️
+<div align="center">
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Deployment**: [Vercel](https://vercel.com)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Analytics**: [Logrocket](https://logrocket.com/)
-- **Content**: [MDX](https://mdxjs.com/) with [Contentlayer](https://www.contentlayer.dev/)
+# np.com ⚡️
 
-## Running Locally
+![Next.js](https://img.shields.io/badge/framework-Next.js-lightgrey.svg?style=for-the-badge&logo=next.js)
+![Deployment](https://img.shields.io/badge/deployment-Vercel-informational.svg?style=for-the-badge&logo=vercel)
+![Styling](https://img.shields.io/badge/styling-Tailwind_CSS-blue.svg?style=for-the-badge&logo=tailwind-css)
+![Analytics](https://img.shields.io/badge/analytics-Logrocket-yellowgreen.svg?style=for-the-badge&logo=logrocket)
+![Content](https://img.shields.io/badge/content-MDX_with_Contentlayer-ff69b4.svg?style=for-the-badge&logo=markdown)
 
-### Installation
+Build your next project with `np.com` - a high-performance website template using Next.js, styled with Tailwind CSS, and equipped with powerful tools for analytics and content management.
 
-1. Clone this repo
+</div>
 
-```bash
-git clone git@github.com:dlarroder/dalelarroder.git
-```
+## 🚀 Running Locally
+
+### 📦 Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone git@github.com:pradhann/np.git
+    ```
 
 2. Change directory
 
 ```sh
-cd dalelarroder
+cd np
 ```
 
-3. Install yarn packages
+3. Install dependencies packages
 
 ```bash
-yarn
+npm install 
 ```
 
-1. Create a `.env.local` file following the `.env.example`
+4. Run the development server
 
 ```bash
-cp .env.example .env.local
+npm run dev
 ```
 
-5. Add your environment variables to `.env.local`
+## 💡 Contributing
 
-```txt
-SPOTIFY_REFRESH_TOKEN=<Your env>
-SPOTIFY_CLIENT_SECRET=<Your env>
-SPOTIFY_CLIENT_ID=<Your env>
-// ...
-```
+We welcome contributions to np.com! Whether it's submitting bug reports, requesting features, or submitting code changes through pull requests, every contribution is greatly appreciated.
 
-6. Run the development server
+Please check out our [Contributing Guidelines](CONTRIBUTING.md) for more details on how to submit contributions, coding standards, and how we handle pull requests.
 
-```bash
-yarn dev
-```
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
-1. Fork the Project
-2. Commit your Changes (`git commit -m 'Add some Feature'`)
-3. Push to the Branch (`git push origin main`)
-4. Open a Pull Request
 
-## Lighthouse Score
+# 🙏 Acknowledgements
 
-![Screen Shot 2022-07-04 at 10 52 02 AM](https://user-images.githubusercontent.com/52998821/177234494-f6bc0203-ba71-4f59-8eb7-6375e3784b31.png)
+np.com wouldn't be what it is without the contributions of the community and the use of open-source software. This is a shout out to those who have made it possible.
 
-## Previous Version
+- **[Next.js](https://nextjs.org/)** for the framework that powers our website.
+- **[Tailwind CSS](https://tailwindcss.com/)** for the styling framework that makes our site look sleek.
+- **[Vercel](https://vercel.com)** for providing deployment and hosting, making it easy to share np.com with the world.
+- **[Logrocket](https://logrocket.com/)** for analytics and performance monitoring, helping us understand user interactions.
+- **[MDX](https://mdxjs.com/)** and **[Contentlayer](https://www.contentlayer.dev/)** for content management and rendering, making our site dynamic and engaging.
+- Inspired by [Tailwind Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) for initial inspiration and guidance.
+- Template from [dalelarroder.com](https://github.com/dlarroder/dalelarroder) for providing a starting point for our project.
 
-This is the second version of my website.
+We also want to thank every contributor who has spent time improving np.com and every user who has given np.com a chance to be a part of their project.
 
-Prevoius v1 version:
-
-- https://v1.dalelarroder.com/
-
-## Licence
-
-[MIT](https://github.com/dlarroder/dalelarroder/blob/master/LICENSE) © [Dale Larroder](https://www.dalelarroder.com)
+Thank you!
