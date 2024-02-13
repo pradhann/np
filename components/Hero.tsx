@@ -5,6 +5,7 @@ import { ReactElement, useContext, useRef } from 'react';
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
 import { ScrollContext } from './Providers/ScrollProvider';
 import MainLayout from './layouts/MainLayout';
+import Image from 'next/image';
 
 export default function Hero(): ReactElement {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -33,12 +34,16 @@ export default function Hero(): ReactElement {
             </p>
           </div>
           <div className="flex-1 flex justify-center lg:justify-end">
-            <img
-              alt="Nripesh Pradhan"
-              className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full object-cover"
-              src="static/images/profile_pic.png"
-              style={{ aspectRatio: '1 / 1' }}
-            />
+            <div className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden">
+              <Image
+                alt="Nripesh Pradhan"
+                src="/static/images/profile_pic.png" // Adjust the path; it should start with a slash
+                width={384} // These values should ideally match the intrinsic size of your image
+                height={384} // for optimal display, but they can be adjusted for your layout needs
+                className="object-cover" // Tailwind CSS classes for object-fit, etc., can still be applied
+                layout="responsive" // This ensures the image scales nicely to the parent div's size
+              />
+            </div>
           </div>
         </div>
 
