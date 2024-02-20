@@ -9,11 +9,12 @@
 }
 
 .social-item {
-  @apply border-2 border-gray-800 flex items-center justify-center transition-opacity duration-300 opacity-60;
+  @apply border-2 border-gray-800 flex items-center justify-center transition-opacity duration-300 opacity-80 bg-gradient-to-r from-white to-gray-300 dark:from-gray-700 dark:to-gray-900;
+  @apply shadow-lg; /* Adds a larger shadow for more depth */
 }
 
 .social-item:hover {
-  @apply opacity-100;
+  @apply bg-gradient-to-l from-white to-gray-500 dark:from-gray-600 dark:to-gray-800;
 }
 
 /* Define custom heights based on screen sizes */
@@ -27,14 +28,16 @@
 @media (min-width: 768px) {
   /* Medium screens and up */
   .social-item {
-    @apply h-80; /* Increase height for medium screens */
+    @apply h-80;
+    /* Increase height for medium screens */
   }
 }
 
 @media (min-width: 1024px) {
   /* Large screens and up */
   .social-item {
-    @apply h-96; /* Increase height for large screens */
+    @apply h-96;
+    /* Increase height for large screens */
   }
 }
 
@@ -42,6 +45,7 @@
 .icon-wrapper {
   @apply mb-4;
 }
+
 .task-list-item::before {
   @apply hidden;
 }
