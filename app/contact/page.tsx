@@ -20,7 +20,7 @@ const socials = [
     Icon: FaGithub,
     href: 'https://github.com/pradhann',
     label: 'Github',
-    handle: 'pradhann',
+    handle: '@pradhann',
   },
 ];
 
