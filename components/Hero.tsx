@@ -37,7 +37,7 @@ export default function Hero(): ReactElement {
             <div className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden">
               <Image
                 alt="Nripesh Pradhan"
-                src="/static/images/hero_pic.png" // Adjust the path; it should start with a slash
+                src="/static/images/hero_pic.jpg" // Adjust the path; it should start with a slash
                 width={384} // These values should ideally match the intrinsic size of your image
                 height={384} // for optimal display, but they can be adjusted for your layout needs
                 className="object-cover" // Tailwind CSS classes for object-fit, etc., can still be applied
