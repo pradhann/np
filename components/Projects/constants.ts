@@ -15,6 +15,13 @@ export const projects: Project[] = [
     url: 'https://huberman-gpt-gamma.vercel.app/',
     role: 'ML Engineer',
   },
+  {
+    title: 'Laughing-Sherpa',
+    src: 'huberman-web.webp',
+    color: '#f0fdf4',
+    url: 'https://laughing-sherpa.vercel.app/',
+    role: 'Frontend Developer',
+  },
 
   {
     title: 'This Website',
@@ -28,6 +35,6 @@ export const projects: Project[] = [
     src: 'topo.webp',
     color: '#dbeafe',
     url: '',
-    role: 'Everything',
+    role: 'ML Engineer',
   },
 ];
