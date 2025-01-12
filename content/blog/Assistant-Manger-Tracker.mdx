@@ -1,0 +1,154 @@
+---
+title: 'Assistant Manager Tracker'
+date: '2024-01-13'
+tags: ['Python', 'Streamlit', 'Assistant Manager Tracker']
+draft: false
+author: 'Nripesh Pradhan'
+summary: 'A simple tool to track your assistant managers chip points .'
+---
+
+# Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+# Assistant Manager Chip in FPL
+
+The **Assistant Manager Chip** is the latest feature in Fantasy Premier League (FPL), allowing you to score points based on real-life Premier League managers' performances. This will be a high variance chip with multiple strategies on how to
+
+---
+
+## Mechanics
+
+### Performance Points
+
+- 🏆 **Win**: +6 points
+- 🤝 **Draw**: +3 points
+- ⚽ **Goal Scored**: +1 point
+- 🧤 **Clean Sheet**: +2 points
+
+### Bonus Points
+
+- **Table Bonus** (vs. a club ranked **5+ places higher**):
+  - 🥇 **Win**: +10 points (_16 total_)
+  - 🤝 **Draw**: +5 points (_8 total_)
+
+---
+
+## Retroactive Evaluation Of Managers
+
+<figure>
+  <img src="/static/blog/demo-1.png" alt="Total Points Till Gameweek 20" />
+  <figcaption>Total Points Till Gameweek 20</figcaption>
+</figure>
+
+### Takeaways
+
+If you want steady returns, focus on managers with easy fixtures and goal-scoring potential. For high-risk, high-reward strategies, back managers with opportunities for table bonus points by targeting upsets against stronger teams.
+
+#### 1. **Choose Managers with Easy Fixtures**
+
+Target managers whose teams have a favorable run of games. Points can be accumulated through:
+
+- **Goal Points**: 1 point for every goal scored by the team.
+- **Win Points**: 6 points for a victory.
+
+For example, **Arne Slot (Liverpool)** ranks at the top due to consistent wins and goals against weaker opposition.
+
+---
+
+#### 2. **Exploit the Table Bonus**
+
+Select managers of mid-tier teams that are likely to face higher-ranked opponents. The table bonus can yield:
+
+- **+10 Points** for a win.
+- **+5 Points** for a draw.
+
+For example, **Oliver Glasner (Crystal Palace)** has earned significant points by upsetting stronger teams, leveraging the table bonus effectively. For the next half of the season, **Ruben Amorim (Manchester United)** is likely to rack up plenty of table bonus points.
+
+---
+
+## Evaluation Of The Managers
+
+<figure>
+  <img src="/static/blog/demo-2.png" alt="By Managers" />
+  <figcaption>Manager Summary Till Gameweek 20</figcaption>
+</figure>
+
+### Takeaways
+
+The idea is to look at the overall performance of the managers, not just the individual fixtures. This way, you can first validate your gut instincts about what type of maangers would benefit from the assistant manager chip. You may be surprised by the results.
+
+For example, Mikel Arteta (Arsenal) is a strong manager with a consistent record, but he may not be the best option for the chip. Clean Sheet points are a measley 2 points per game, and Arsenal's goal scoring potential is not high. Moreover, with the higheset price of $1.5M, he is not a good value for the chip.
+
+Then, you can drill down by event to find the what types of 3 consecutive fixtures are best for you. You would want a mix of easy games with high goal scoring potential and winnable games with table bonus potential.
+
+---
+
+### How the Data Was Retrieved and Processed
+
+#### 1. Fetching Match Data
+
+The script calls the Fantasy Premier League (FPL) API:  
+**Endpoint**: `https://fantasy.premierleague.com/api/fixtures/`  
+**Output**: A JSON list of fixtures with details like team IDs, scores, and events.
+
+- Matches are filtered to include only completed games (those with non-null scores for both teams).
+- Team IDs are mapped to readable names using a predefined dictionary for better clarity.
+- The filtered data is structured into a clean format with key fields such as event, home/away teams, and scores.
+
+Example Transformation:
+
+```python
+results = [
+    {
+        "event": fixture.get("event", 0),
+        "home": self.teams_dict.get(fixture["team_h"], "Unknown"),
+        "away": self.teams_dict.get(fixture["team_a"], "Unknown"),
+        "home_score": fixture.get("team_h_score", 0),
+        "away_score": fixture.get("team_a_score", 0),
+    }
+    for fixture in fixtures
+    if fixture.get("team_h_score") is not None
+]
+```
+
+The cleaned match data is saved into a Pandas DataFrame and stored as a CSV file for reuse.
+
+---
+
+#### 2. Calculating League Positions After Each Gameweek
+
+For every Gameweek:
+
+- **Points System**:
+  - **Win**: 3 points
+  - **Draw**: 1 point
+  - **Loss**: 0 points
+- **Other Metrics**: Goals scored, goals conceded, and goal difference are updated cumulatively.
+- **Rank Teams**: Teams are ranked by points, goal difference, and goals scored. Tied teams share the same position.
+
+Each Gameweek builds on the previous standings to maintain updated league positions throughout the season.
+
+---
+
+#### 3. Calculating Points Using League Positions
+
+For each match:
+
+- **Base Points**:
+  - Win: 6 points, Draw: 3 points, Goal: 1 point, Clean Sheet: 2 points
+- **Table Bonus**: Earn additional points if a team beats or draws against an opponent ranked **5 or more places higher**:
+  - Win: +10 points
+  - Draw: +5 points
+
+League positions from the previous Gameweek are referenced to determine if the table bonus applies.
+
+```python
+if home_pos - away_pos >= 5:
+    if win_points == 6:
+        table_bonus = 10
+    elif draw_points == 3:
+        table_bonus = 5
+```
+
+The final league positions and points are updated iteratively after each Gameweek, ensuring accurate standings and metrics.
