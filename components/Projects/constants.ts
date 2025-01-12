@@ -9,6 +9,13 @@ export const projects: Project[] = [
     role: 'Backend Developer',
   },
   {
+    title: 'Assistant Manager Tracker',
+    src: 'planner-app.webp',
+    color: '#dbeafe',
+    url: 'https://assistant-manager-chip.streamlit.app/',
+    role: 'Python + Streamlit',
+  },
+  {
     title: 'Ask-Huberman',
     src: 'field-app.webp',
     color: '#ddd6fe',
