@@ -1,0 +1,107 @@
+---
+title: 'Against the Gods: The Remarkable Notion of Risk'
+date: '2025-02-02'
+tags: ['Risk', 'Probability', 'Uncertainty', 'MDX']
+draft: false
+author: 'Nripesh Pradhan'
+summary: 'Launching a series on how humanity gradually overcame fatalism and mysticism to develop the modern concept of risk.'
+---
+
+# Decoding Risk: Why It Takes so Long to Think Risk
+
+![Ancient Astronomers](/static/blog/ancient-astronomer.png)
+_Depiction of early thinkers observing celestial movements to predict events._
+
+*Welcome to the first installment of our **Risk Series**, inspired by Peter L. Bernstein's classic work, **Against the Gods**. In this post, we'll explore why it took so long for people to conceive of risk as something *quantifiable* and *manageable*, and how trade, religious reform, and mathematics all converged to give us the modern frameworks of risk and probability.*
+
+---
+
+## The Long Shadow of Fate
+
+For millennia, humans viewed **uncertainty**—whether in harvests, wars, health, or fortune—through the lens of fate or the divine:
+
+- **Fatalism from God**: Many ancient cultures believed gods actively controlled every event. Questioning that by assigning _numbers_ to the gods' will was borderline heretical.
+- **Metaphysical Determinism**: Greek philosophers like the Stoics taught that all events obeyed a predestined order. In such a worldview, calculating “chances” seemed irrelevant—what would be, would be.
+
+![Fortnue Teller](/static/blog/fortune-teller.png)
+_Fortune tellers once played the role that probability models play today—attempting to predict the unpredictable._
+
+This **fatalistic** outlook explains why humanity took centuries to even think of “risk” as something we can _measure_ and _manage_. Nevertheless, social changes gradually chipped away at these assumptions.
+
+> “The winds and waves are always on the side of the ablest navigators.”  
+> _— Edward Gibbon_
+
+---
+
+## The Renaissance Gambler and the Birth of Probability
+
+The transformation began with gamblers. The 16th-century polymath **Girolamo Cardano** made some of the earliest attempts at analyzing chance mathematically, noting patterns in dice rolls and games of luck. But it wasn’t until **Blaise Pascal** and **Pierre de Fermat** exchanged letters in the 17th century that the foundations of probability were formally laid.
+
+Pascal’s and Fermat’s breakthrough centered on how to divide winnings in an unfinished gambling match. Their elegant solution introduced the concept of **expected value**, a principle that still underpins finance, insurance, and decision-making today.
+
+**Key shift**: If gambling outcomes could be systematically analyzed, then perhaps _other_ uncertainties—like commerce and investments—could also be mathematically tamed.
+
+---
+
+## Simulating Risk: Monte Carlo Method
+
+One of the most powerful tools for dealing with uncertainty today is **Monte Carlo simulation**, named after the famous casino. It allows us to estimate probabilities by running thousands of simulations of possible outcomes.
+
+Here’s a **Python example** simulating a dice game where rolling a six means winning:
+
+```python
+import random
+import matplotlib.pyplot as plt
+
+def simulate_dice_game(trials=10000):
+    wins = sum(1 for _ in range(trials) if random.randint(1, 6) == 6)
+    return wins / trials
+
+# Run multiple simulations
+results = [simulate_dice_game() for _ in range(1000)]
+
+plt.hist(results, bins=10, edgecolor='black')
+plt.title("Distribution of Win Probabilities in Simulated Dice Games")
+plt.xlabel("Win Probability")
+plt.ylabel("Frequency")
+plt.show()
+```
+
+---
+
+## The Supreme Law of Unreason: Making Risk Predictable
+
+In the late 17th century, **Jakob Bernoulli** introduced the **Law of Large Numbers**, demonstrating that while individual events appear random, patterns emerge over many trials. This insight forms the backbone of statistics, insurance, and actuarial science.
+
+For example, while we can’t predict a single coin flip, we _can_ predict that over thousands of flips, roughly 50% will land heads. This realization allowed insurers to price policies with confidence and laid the foundation for financial risk models.
+
+---
+
+## The Search for Moral Certainty
+
+Even as mathematics advanced, philosophers and theologians debated probability’s ethical implications. Could one justify decisions based on likelihood rather than divine will?
+
+The **Jesuits’ probabilism** and **Bayesian inference** offered a way forward. **Thomas Bayes** suggested that we could continuously update probabilities as new information emerges—an idea that today drives AI, machine learning, and investment strategies.
+
+---
+
+## Looking Ahead: The Risk Series
+
+We've only scratched the surface. In upcoming posts, we'll explore:
+
+1. **Historical Mathematicians**: Pascal, Fermat, and Bernoulli, who turned gambling puzzles into a formal science.
+2. **Insurance & Actuarial Science**: How risk became a commodity you could price and sell.
+3. **Modern Portfolio Theory**: From diversification to behavioral finance, how do we manage risk in today's volatile markets?
+4. **Limitations & Black Swans**: Where probability fails, and how unexpected events keep us humble.
+
+_Stay tuned_—the story of how humans wrestled with fate and chance is nothing short of epic, and it continues to evolve with every market crash, every insurance policy, and every scientific experiment.
+
+---
+
+## Conclusion
+
+The **concept of risk** emerged **painstakingly** over centuries, as religious fatalism gave way to human agency, commerce demanded calculations, and mathematicians discovered the hidden patterns behind uncertainty. **Probability** became the language we use to **wrest control** from chaos—even if only partially. In this first installment, we set the stage for that journey. Next time, we'll dive deeper into the minds that forged the intellectual tools we still use today.
+
+> _“Risk is part of God's game, alike for men and nations.” — George S. Patton_
+
+**Until next time—embrace the uncertainty, but measure it where you can!**
