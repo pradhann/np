@@ -1,37 +1,42 @@
-import Link from '@/components/Link';
-import Tag from '@/components/Tag';
-import MainLayout from '@/layouts/MainLayout';
-import { getAllTags } from '@/lib/utils/contentlayer';
-import kebabCase from '@/lib/utils/kebabCase';
-import { allBlogs } from 'contentlayer/generated';
+import type { Metadata } from 'next';
 
-export default function Tags() {
-  const tags = getAllTags(allBlogs);
-  const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
+import Container from '@/components/Container';
+import EmptyState from '@/components/EmptyState';
+import Link from '@/components/Link';
+import PageHeader from '@/components/PageHeader';
+import { getAllTags } from '@/lib/posts';
+
+export const metadata: Metadata = {
+  title: 'Tags',
+  description: 'Browse writing by topic.',
+};
+
+export default function TagsPage() {
+  const tags = getAllTags();
+  const sorted = Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
 
   return (
-    <MainLayout>
-      <div className="space-y-2 rounded-lg pt-8 pb-3 md:space-y-5">
-        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
-          Tags
-        </h1>
-      </div>
-      <div className="flex flex-wrap gap-3">
-        {Object.keys(tags).length === 0 && 'No tags found.'}
-        {sortedTags.map((t) => {
-          return (
-            <div key={t} className="mb-5 flex items-center">
-              <Tag text={t} />
-              <Link
-                href={`/tags/${kebabCase(t)}`}
-                className="-ml-2 text-sm font-semibold uppercase text-gray-600 dark:text-gray-300"
-              >
-                {` (${tags[t]})`}
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    </MainLayout>
+    <Container className="py-16 sm:py-20">
+      <PageHeader eyebrow="Tags" title="Browse by topic" />
+      {sorted.length ? (
+        <div className="mt-8 flex flex-wrap gap-3">
+          {sorted.map((tag) => (
+            <Link
+              key={tag}
+              href={`/tags/${tag}`}
+              className="rounded-full border border-border px-3.5 py-1.5 text-sm text-ink-muted transition-colors hover:border-accent hover:text-accent"
+            >
+              {tag} <span className="ml-1 text-ink-faint">{tags[tag]}</span>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-12">
+          <EmptyState title="No tags yet.">
+            Topics will appear here once the first essays are published.
+          </EmptyState>
+        </div>
+      )}
+    </Container>
   );
 }

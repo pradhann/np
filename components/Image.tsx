@@ -1,5 +1,8 @@
-import NextImage, { ImageProps } from 'next/image';
+import clsx from 'classnames';
+import NextImage, { type ImageProps } from 'next/image';
 
-const Image = ({ ...rest }: ImageProps) => <NextImage {...rest} />;
-
-export default Image;
+export default function Image({ className, alt, ...rest }: ImageProps) {
+  return (
+    <NextImage alt={alt} className={clsx('rounded-lg border border-border', className)} {...rest} />
+  );
+}

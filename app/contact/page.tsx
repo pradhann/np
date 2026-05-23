@@ -1,60 +1,58 @@
-import MainLayout from '@/layouts/MainLayout'; // Importing MainLayout
-import { FaTwitter, FaEnvelope, FaGithub } from 'react-icons/fa'; // Importing icons
-import Link from 'next/link'; // Importing Link from Next.js (not MUI)
+import type { Metadata } from 'next';
+import { FiArrowUpRight } from 'react-icons/fi';
 
-// Define your socials array
-const socials = [
+import Container from '@/components/Container';
+import Link from '@/components/Link';
+import PageHeader from '@/components/PageHeader';
+import { siteMetadata } from '@/data/siteMetadata';
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description: 'Get in touch with Nripesh Pradhan.',
+};
+
+const methods = [
+  { label: 'Email', value: siteMetadata.email, href: `mailto:${siteMetadata.email}` },
   {
-    Icon: FaTwitter,
-    href: 'https://twitter.com/nripeshpradhan',
-    label: 'Twitter',
-    handle: '@nripeshpradhan',
+    label: 'LinkedIn',
+    value: `linkedin.com/in/${siteMetadata.linkedinHandle}`,
+    href: siteMetadata.linkedin,
   },
   {
-    Icon: FaEnvelope,
-    href: 'mailto:dev@gmail.com',
-    label: 'Email',
-    handle: 'npradhan@chippercash.com',
-  },
-  {
-    Icon: FaGithub,
-    href: 'https://github.com/pradhann',
-    label: 'Github',
-    handle: '@pradhann',
+    label: 'GitHub',
+    value: `github.com/${siteMetadata.githubHandle}`,
+    href: siteMetadata.github,
   },
 ];
 
-export default function Contact() {
+export default function ContactPage() {
   return (
-    <MainLayout>
-      <div className="space-y-2 pt-6 pb-8 md:space-y-5 ">
-        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
-          Contact
-        </h1>
-        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          Reach out if you have any questions or just want to say hi!
-        </p>
-      </div>
-      <div className="socials-grid">
-        {socials.map(({ Icon, href, label, handle }) => (
-          <div key={label} className={`social-item`}>
-            {' '}
-            {/* Opacity change on hover */}
-            <Link href={href} aria-label={label} legacyBehavior>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center space-y-4"
-              >
-                <Icon className="text-4xl md:text-5xl text-current mb-8" /> {/* Increased space */}
-                <h3 className="text-md lg:text-lg font-bold text-gray-900 dark:text-gray-100">
-                  {handle}
-                </h3>
-              </a>
-            </Link>
-          </div>
+    <Container size="reading" className="py-16 sm:py-20">
+      <PageHeader
+        eyebrow="Contact"
+        title="Get in touch"
+        intro="I’m always glad to talk about building, fintech, risk systems, and hard problems worth solving, whether that’s a role, a collaboration, or just a good conversation."
+      />
+      <div className="mt-4 divide-y divide-border">
+        {methods.map((method) => (
+          <Link
+            key={method.label}
+            href={method.href}
+            className="group flex items-center justify-between gap-6 py-6"
+          >
+            <div>
+              <p className="eyebrow mb-1.5">{method.label}</p>
+              <p className="font-display text-xl text-ink transition-colors group-hover:text-accent">
+                {method.value}
+              </p>
+            </div>
+            <FiArrowUpRight
+              className="shrink-0 text-ink-faint transition-colors group-hover:text-accent"
+              size={20}
+            />
+          </Link>
         ))}
       </div>
-    </MainLayout>
+    </Container>
   );
 }

@@ -1,29 +1,26 @@
-'use client';
+import NextLink from 'next/link';
+import type { AnchorHTMLAttributes } from 'react';
 
-import { LinkButton } from '@dlarroder/playground';
-import Link from 'next/link';
-import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
+type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
 
-const CustomLink = ({
-  href,
-  ...rest
-}: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => {
-  const isInternalLink = href && href.startsWith('/');
-  const isAnchorLink = href && href.startsWith('#');
-
-  if (isInternalLink) {
+export default function Link({ href, children, ...rest }: LinkProps) {
+  if (href.startsWith('/')) {
     return (
-      <Link href={href} legacyBehavior>
-        <LinkButton {...rest} />
-      </Link>
+      <NextLink href={href} {...rest}>
+        {children}
+      </NextLink>
     );
   }
-
-  if (isAnchorLink) {
-    return <LinkButton href={href} {...rest} />;
+  if (href.startsWith('#')) {
+    return (
+      <a href={href} {...rest}>
+        {children}
+      </a>
+    );
   }
-
-  return <LinkButton target="_blank" rel="noopener noreferrer" href={href} {...rest} />;
-};
-
-export default CustomLink;
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" {...rest}>
+      {children}
+    </a>
+  );
+}

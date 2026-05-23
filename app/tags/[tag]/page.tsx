@@ -1,28 +1,39 @@
-import ListLayout from '@/layouts/MDX/ListLayout';
-import MainLayout from '@/layouts/MainLayout';
-import { allCoreContent } from '@/lib/utils/contentlayer';
-import kebabCase from '@/lib/utils/kebabCase';
-import { allBlogs } from 'contentlayer/generated';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-export const metadata = {
-  title: 'Blog - Nripesh Pradhan',
-  description: 'My Tags - Nripesh Pradhan',
-};
+import Container from '@/components/Container';
+import PageHeader from '@/components/PageHeader';
+import PostCard from '@/components/PostCard';
+import { getAllTags, getPostsByTag } from '@/lib/posts';
 
-export default function Tag({ params }: { params: { tag: string } }) {
-  const { tag } = params;
-  const posts = allCoreContent(
-    allBlogs.filter(
-      (post) => post.draft !== true && post.tags?.map((t) => kebabCase(t)).includes(tag)
-    )
-  );
+type Params = { params: Promise<{ tag: string }> };
 
-  // Capitalize first letter and convert space to dash
-  const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1);
+export function generateStaticParams() {
+  return Object.keys(getAllTags()).map((tag) => ({ tag }));
+}
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { tag } = await params;
+  return { title: `Tag · ${tag}`, description: `Writing tagged “${tag}”.` };
+}
+
+export default async function TagPage({ params }: Params) {
+  const { tag } = await params;
+  const posts = getPostsByTag(tag);
+  if (!posts.length) notFound();
 
   return (
-    <MainLayout>
-      <ListLayout posts={posts} title={title} />
-    </MainLayout>
+    <Container className="py-16 sm:py-20">
+      <PageHeader
+        eyebrow="Tag"
+        title={tag}
+        intro={`${posts.length} ${posts.length === 1 ? 'essay' : 'essays'} on this topic.`}
+      />
+      <div className="mt-4 divide-y divide-border">
+        {posts.map((post) => (
+          <PostCard key={post.slug} post={post} />
+        ))}
+      </div>
+    </Container>
   );
 }

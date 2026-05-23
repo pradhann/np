@@ -1,25 +1,59 @@
-import siteMetadata from 'content/siteMetadata';
-import Link from 'next/link';
-import { Suspense } from 'react';
-import SectionContainer from './SectionContainer';
+import { navLinks } from '@/data/navLinks';
+import { siteMetadata } from '@/data/siteMetadata';
+
+import Container from './Container';
+import Link from './Link';
+
+const elsewhere = [
+  { title: 'GitHub', href: siteMetadata.github },
+  { title: 'LinkedIn', href: siteMetadata.linkedin },
+  { title: 'Email', href: `mailto:${siteMetadata.email}` },
+  { title: 'RSS', href: '/feed.xml' },
+];
 
 export default function Footer() {
   return (
-    <SectionContainer>
-      <footer>
-        <div className="mb-0 flex flex-col justify-start space-y-1.5 space-x-0 py-10 text-gray-500 dark:text-gray-400">
-          <Suspense fallback="loading..."></Suspense>
-          <div className="flex flex-col items-center space-y-2 text-sm sm:flex-row sm:justify-between sm:text-base">
-            <ul className="flex space-x-2">
-              <li>{`© ${new Date().getFullYear()}`}</li>
-              <li>{` • `}</li>
-              <li>
-                <Link href="/">{siteMetadata.title}</Link>
-              </li>
-            </ul>
-          </div>
+    <footer className="mt-28 border-t border-border">
+      <Container className="grid gap-10 py-14 sm:grid-cols-2 sm:gap-8">
+        <div className="max-w-sm">
+          <p className="font-display text-lg text-ink">Nripesh Pradhan</p>
+          <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+            {siteMetadata.role}. Currently in the {siteMetadata.location}.
+          </p>
         </div>
-      </footer>
-    </SectionContainer>
+        <div className="grid grid-cols-2 gap-8 sm:justify-items-end">
+          <nav className="flex flex-col gap-2.5">
+            <p className="eyebrow mb-1">Pages</p>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm text-ink-muted transition-colors hover:text-ink"
+              >
+                {link.title}
+              </Link>
+            ))}
+          </nav>
+          <nav className="flex flex-col gap-2.5">
+            <p className="eyebrow mb-1">Elsewhere</p>
+            {elsewhere.map((link) => (
+              <Link
+                key={link.title}
+                href={link.href}
+                className="text-sm text-ink-muted transition-colors hover:text-ink"
+              >
+                {link.title}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </Container>
+      <div className="border-t border-border/70">
+        <Container className="flex items-center justify-between py-6">
+          <p className="text-xs text-ink-faint">© {new Date().getFullYear()} Nripesh Pradhan</p>
+          <p className="font-mono text-xs text-ink-faint">Built &amp; written from scratch</p>
+        </Container>
+      </div>
+    </footer>
   );
 }
