@@ -2,126 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles */
-.socials-grid {
-  @apply grid gap-2 sm:grid-cols-1 md:grid-cols-3;
-  /* 1 column on small screens, 3 columns on medium and up */
-}
+/* ------------------------------------------------------------------ *
+ * Design tokens
+ * ------------------------------------------------------------------ */
+@layer base {
+  :root {
+    --canvas: 250 248 244;
+    --surface: 255 255 255;
+    --ink: 28 27 25;
+    --ink-muted: 92 88 80;
+    --ink-faint: 142 137 127;
+    --border: 228 223 213;
+    --accent: 26 61 58;
+    --accent-hover: 16 40 38;
+    --selection: 210 228 224;
+    --code-bg: 244 241 233;
+  }
 
-.social-item {
-  @apply border-2 border-gray-800 flex items-center justify-center transition-opacity duration-300 opacity-80 bg-gradient-to-r from-white to-gray-300 dark:from-gray-700 dark:to-gray-900;
-  @apply shadow-lg; /* Adds a larger shadow for more depth */
-}
+  .dark {
+    --canvas: 20 19 16;
+    --surface: 31 30 24;
+    --ink: 236 232 223;
+    --ink-muted: 165 159 146;
+    --ink-faint: 122 117 106;
+    --border: 48 46 38;
+    --accent: 124 178 171;
+    --accent-hover: 150 199 193;
+    --selection: 42 60 58;
+    --code-bg: 28 27 22;
+  }
 
-.social-item:hover {
-  @apply bg-gradient-to-l from-white to-gray-500 dark:from-gray-600 dark:to-gray-800;
-}
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
 
-/* Define custom heights based on screen sizes */
-@media (min-width: 640px) {
-  /* Small screens and up */
-  .social-item {
-    @apply h-40;
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+    font-feature-settings: 'kern', 'liga', 'calt';
+  }
+
+  ::selection {
+    background-color: rgb(var(--selection));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-canvas;
+  }
+
+  a {
+    text-underline-offset: 3px;
   }
 }
 
-@media (min-width: 768px) {
-  /* Medium screens and up */
-  .social-item {
-    @apply h-80;
-    /* Increase height for medium screens */
+/* ------------------------------------------------------------------ *
+ * Reusable utilities
+ * ------------------------------------------------------------------ */
+@layer components {
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.16em] text-ink-faint;
   }
 }
 
-@media (min-width: 1024px) {
-  /* Large screens and up */
-  .social-item {
-    @apply h-96;
-    /* Increase height for large screens */
+/* ------------------------------------------------------------------ *
+ * Code blocks (rehype-pretty-code + Shiki dual theme)
+ * ------------------------------------------------------------------ */
+@layer components {
+  .prose figure[data-rehype-pretty-code-figure] {
+    @apply my-7 overflow-hidden rounded-lg border border-border;
   }
-}
 
-/* Add margin to the icon wrapper */
-.icon-wrapper {
-  @apply mb-4;
-}
+  [data-rehype-pretty-code-title] {
+    @apply border-b border-border bg-[rgb(var(--code-bg))] px-4 py-2 font-mono text-xs text-ink-muted;
+  }
 
-.task-list-item::before {
-  @apply hidden;
-}
+  .prose pre {
+    @apply m-0 overflow-x-auto rounded-none border-0 bg-[rgb(var(--code-bg))] px-0 py-4 text-sm leading-relaxed;
+  }
 
-.task-list-item {
-  @apply list-none;
-}
+  .prose pre code {
+    @apply grid border-0 bg-transparent p-0 font-mono text-sm font-normal;
+    counter-reset: line;
+  }
 
-html::-webkit-scrollbar {
-  display: none;
-}
+  .prose pre code > [data-line] {
+    @apply border-l-2 border-transparent px-4;
+  }
 
-/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
-input:-webkit-autofill,
-input:-webkit-autofill:focus {
-  transition:
-    background-color 600000s 0s,
-    color 600000s 0s;
-}
+  .prose pre code[data-line-numbers] > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    @apply mr-4 inline-block w-4 text-right text-ink-faint;
+  }
 
-.underline-magical {
-  @apply bg-gradient-to-r from-primary-500 to-primary-500 bg-no-repeat no-underline [background-position:0_100%] [background-size:100%_0.2em] focus:[background-size:100%_100%] hover:text-white hover:[background-size:100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500;
-}
+  [data-highlighted-line] {
+    background-color: rgb(var(--accent) / 0.08);
+    border-left-color: rgb(var(--accent) / 0.5) !important;
+  }
 
-.horizontal-underline {
-  border-bottom-width: 0;
-  background-image: linear-gradient(transparent, transparent), linear-gradient(#203d7b, #3b4a6b);
-  background-size: 0 3px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.5s ease-in-out;
-}
+  mark[data-highlighted-chars] {
+    background-color: rgb(var(--accent) / 0.16);
+    @apply rounded px-0.5;
+  }
 
-.horizontal-underline:hover {
-  background-size: 100% 3px;
-  background-position: 0 100%;
-}
+  code[data-theme] span {
+    color: var(--shiki-light);
+  }
+  .dark code[data-theme] span {
+    color: var(--shiki-dark);
+  }
 
-.horizontal-underline-active {
-  background-size: 100% 3px;
-  background-position: 0 100%;
-}
+  .prose :not(pre) > code {
+    @apply rounded bg-[rgb(var(--code-bg))] px-1.5 py-0.5 font-mono text-[0.85em] font-normal text-ink;
+  }
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after {
+    content: none;
+  }
 
-#nprogress .bar {
-  background: #de1d8d !important;
-  height: 4px !important;
-}
+  .prose :where(h1, h2, h3, h4) a {
+    @apply font-display text-ink no-underline;
+  }
 
-.introText {
-  transition: opacity 0.4s;
-}
+  .mermaid-diagram {
+    @apply my-7 flex justify-center overflow-x-auto rounded-lg border border-border bg-surface p-5;
+  }
+  .mermaid-diagram svg {
+    @apply h-auto max-w-full;
+  }
 
-[cmdk-root] {
-  @apply fixed top-[25vh] left-1/2 z-10 w-full max-w-[640px] -translate-x-1/2 transform rounded-xl border bg-white p-2 shadow-lg dark:border-neutral-800 dark:bg-neutral-900 dark:shadow dark:shadow-neutral-700;
-}
-
-[cmdk-input] {
-  @apply h-12 w-full border-0 border-b border-b-gray-200 bg-transparent text-sm font-semibold text-gray-500 placeholder-gray-500 outline-none focus:border-b focus:border-transparent focus:border-b-gray-200 focus:ring-0 dark:border-b-gray-500 dark:text-gray-200 dark:placeholder-gray-300;
-}
-
-[cmdk-list] {
-  @apply mt-2 max-h-64 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-700;
-}
-
-[cmdk-item] {
-  @apply relative flex h-12 cursor-pointer select-none items-center space-x-3 rounded-md px-4 text-sm font-medium text-gray-700 transition-all duration-200 ease-in dark:text-gray-200;
-}
-
-[cmdk-item][aria-selected='true'] {
-  @apply bg-gray-200 dark:bg-neutral-800;
-}
-
-[cmdk-group-heading] {
-  @apply flex select-none items-center py-1 text-sm font-medium text-gray-700 dark:text-gray-200;
-}
-
-[cmdk-empty] {
-  @apply flex items-center justify-center py-4 text-sm text-gray-500;
+  /* Prose tables: scroll horizontally on narrow screens instead of overflowing. */
+  .prose table {
+    @apply block max-w-full overflow-x-auto whitespace-normal;
+  }
 }

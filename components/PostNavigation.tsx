@@ -1,40 +1,32 @@
-import { BlogLink } from '@/lib/utils/contentlayer';
-import Link from 'next/link';
+import Link from './Link';
 
-interface PostNavigationProps {
-  prev?: BlogLink;
-  next?: BlogLink;
-}
+type Adjacent = { slug: string; title: string };
 
-export default function PostNavigation({ prev, next }: PostNavigationProps) {
+export default function PostNavigation({ prev, next }: { prev?: Adjacent; next?: Adjacent }) {
+  if (!prev && !next) return null;
+
   return (
-    <div className="grid grid-rows-2 gap-3 pt-4 sm:grid-cols-2 sm:pt-6">
-      <div>
-        {prev && (
-          <div className="flex flex-col items-center space-y-1 sm:items-start">
-            <span className="italic">Previous Blog</span>
-            <Link
-              href={`/blog/${prev.slug}`}
-              className="underline-magical max-w-sm truncate sm:max-w-[250px] xl:max-w-md"
-            >
-              &larr; {prev.title}
-            </Link>
-          </div>
-        )}
-      </div>
-      <div>
-        {next && (
-          <div className="flex flex-col items-center space-y-1 sm:items-end">
-            <span className="italic">Next Blog</span>
-            <Link
-              href={`/blog/${next.slug}`}
-              className="underline-magical max-w-sm truncate sm:max-w-[250px] xl:max-w-md"
-            >
-              {next.title} &rarr;
-            </Link>
-          </div>
-        )}
-      </div>
-    </div>
+    <nav className="mt-16 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
+      {prev ? (
+        <Link href={`/writing/${prev.slug}`} className="group block">
+          <span className="eyebrow">Previous</span>
+          <span className="mt-1.5 block font-display text-lg text-ink transition-colors group-hover:text-accent">
+            {prev.title}
+          </span>
+        </Link>
+      ) : (
+        <span />
+      )}
+      {next ? (
+        <Link href={`/writing/${next.slug}`} className="group block sm:text-right">
+          <span className="eyebrow">Next</span>
+          <span className="mt-1.5 block font-display text-lg text-ink transition-colors group-hover:text-accent">
+            {next.title}
+          </span>
+        </Link>
+      ) : (
+        <span />
+      )}
+    </nav>
   );
 }

@@ -1,30 +1,23 @@
-/* eslint-disable react/display-name */
-import { coreContent } from '@/lib/utils/contentlayer';
-import type { Authors, Blog } from 'contentlayer/generated';
-import type { MDXComponents } from 'mdx/types';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import type { ComponentPropsWithoutRef } from 'react';
+
 import Image from './Image';
-import CustomLink from './Link';
-import LinkButton from './LinkButton';
+import Link from './Link';
+import Mermaid from './Mermaid';
 import Pre from './Pre';
-import TOCInline from './TOCInline';
 
-interface MDXLayout {
-  content: Blog | Authors;
-  [key: string]: unknown;
-}
-
-export const components: MDXComponents = {
-  Image,
-  TOCInline,
-  a: CustomLink,
+export const mdxComponents = {
+  a: ({ href = '', ...rest }: ComponentPropsWithoutRef<'a'>) => <Link href={href} {...rest} />,
   pre: Pre,
-  LinkButton,
-};
-
-export const MDXLayoutRenderer = ({ content, ...rest }: MDXLayout) => {
-  const MDXLayout = useMDXComponent(content.body.code);
-  const mainContent = coreContent(content);
-
-  return <MDXLayout content={mainContent} components={components} {...rest} />;
+  img: ({ alt, ...props }: ComponentPropsWithoutRef<'img'>) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      {...props}
+      alt={alt ?? ''}
+      loading="lazy"
+      className="mx-auto rounded-lg border border-border"
+    />
+  ),
+  Image,
+  Mermaid,
+  mermaid: Mermaid,
 };

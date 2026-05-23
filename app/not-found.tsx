@@ -1,21 +1,17 @@
-import Link from '@/components/Link';
-import SectionContainer from '@/components/SectionContainer';
+import Container from '@/components/Container';
+import LinkButton from '@/components/LinkButton';
 
-export default function FourZeroFour() {
+export default function NotFound() {
   return (
-    <SectionContainer>
-      <div className="space-x-2 pt-6 pb-8 md:space-y-5">
-        <h1 className="text-6xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 md:border-r-2 md:px-6 md:text-8xl md:leading-14">
-          404
-        </h1>
+    <Container className="flex flex-col items-center py-32 text-center sm:py-40">
+      <p className="eyebrow">Error 404</p>
+      <h1 className="mt-4 font-display text-display font-medium text-ink">Not found.</h1>
+      <p className="mt-5 max-w-md leading-relaxed text-ink-muted">
+        The page you&rsquo;re looking for doesn&rsquo;t exist, or it may have moved.
+      </p>
+      <div className="mt-8">
+        <LinkButton href="/">Back home</LinkButton>
       </div>
-      <div className="max-w-md">
-        <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
-          Sorry we couldn't find this page.
-        </p>
-        <p className="mb-8">But dont worry, you can find plenty of other things on our homepage.</p>
-        <Link href="/">Back to homepage</Link>
-      </div>
-    </SectionContainer>
+    </Container>
   );
 }
