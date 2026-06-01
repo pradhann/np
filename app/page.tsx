@@ -22,24 +22,12 @@ export default function HomePage() {
   return (
     <>
       <Container className="pt-16 sm:pt-20">
-        <div className="grid grid-cols-1 items-center gap-y-8 sm:grid-cols-12 sm:gap-8">
+        <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-12 sm:items-center sm:gap-8">
           <div className="order-2 sm:order-1 sm:col-span-8 sm:pr-6">
             <p className="eyebrow">Engineer &amp; systems builder · San Francisco</p>
             <h1 className="mt-6 font-display text-display font-medium text-ink">
               I build the intelligence and automation that fintech runs on.
             </h1>
-            <p className="mt-7 max-w-prose text-lg leading-relaxed text-ink-muted">
-              For seven years I&rsquo;ve designed and shipped production ML systems, data platforms,
-              and risk infrastructure at Chipper Cash, a fintech serving 10M+ people across seven
-              African markets. I&rsquo;m currently Head of Risk Intelligence &amp; Automations
-              there, and I write about systems, risk, and the books I cannot stop turning over.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <LinkButton href="/work">See the work</LinkButton>
-              <LinkButton href="/writing" variant="outline">
-                Read the writing
-              </LinkButton>
-            </div>
           </div>
 
           <div className="order-1 sm:order-2 sm:col-span-4">
@@ -49,9 +37,24 @@ export default function HomePage() {
               width={1000}
               height={1000}
               priority
-              sizes="(min-width: 640px) 13rem, 8rem"
-              className="mx-auto h-32 w-32 rounded-full border border-border object-cover shadow-[0_1px_2px_rgba(0,0,0,0.04),0_10px_28px_-12px_rgba(0,0,0,0.25)] sm:ml-auto sm:mr-0 sm:h-52 sm:w-52"
+              sizes="(min-width: 640px) 15rem, 8.5rem"
+              className="mx-auto h-[8.5rem] w-[8.5rem] rounded-full border border-border object-cover shadow-[0_1px_2px_rgba(0,0,0,0.04),0_12px_30px_-14px_rgba(0,0,0,0.28)] sm:ml-auto sm:mr-0 sm:h-60 sm:w-60"
             />
+          </div>
+        </div>
+
+        <div className="mt-10 max-w-prose">
+          <p className="text-lg leading-relaxed text-ink-muted">
+            For seven years I&rsquo;ve designed and shipped production ML systems, data platforms,
+            and risk infrastructure at Chipper Cash, a fintech serving 10M+ people across seven
+            African markets. I&rsquo;m currently Head of Risk Intelligence &amp; Automations there,
+            and I write about systems, risk, and the books I cannot stop turning over.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <LinkButton href="/work">See the work</LinkButton>
+            <LinkButton href="/writing" variant="outline">
+              Read the writing
+            </LinkButton>
           </div>
         </div>
       </Container>
