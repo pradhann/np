@@ -32,7 +32,7 @@ export default function HomePage() {
             and I write about systems, risk, and the books I cannot stop turning over.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <LinkButton href="/work">See the work</LinkButton>
+            <LinkButton href="/resume">See the work</LinkButton>
             <LinkButton href="/writing" variant="outline">
               Read the writing
             </LinkButton>
