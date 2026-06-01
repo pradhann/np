@@ -40,3 +40,4 @@ yarn-error.log*
 # Content Collections
 .content-collections
 .claude
+public/static/images/avatar-raw.jpeg
