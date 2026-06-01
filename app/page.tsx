@@ -33,9 +33,6 @@ export default function HomePage() {
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <LinkButton href="/work">See the work</LinkButton>
-            <LinkButton href="/writing" variant="outline">
-              Read the writing
-            </LinkButton>
             <LinkButton href="/resume" variant="outline">
               Resume
             </LinkButton>
