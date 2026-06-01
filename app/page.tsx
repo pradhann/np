@@ -22,8 +22,8 @@ export default function HomePage() {
   return (
     <>
       <Container className="pt-16 sm:pt-20">
-        <div className="grid grid-cols-1 items-center gap-10 sm:grid-cols-12 sm:gap-8">
-          <div className="sm:col-span-7 sm:pr-4">
+        <div className="grid grid-cols-1 items-center gap-y-8 sm:grid-cols-12 sm:gap-8">
+          <div className="order-2 sm:order-1 sm:col-span-8 sm:pr-6">
             <p className="eyebrow">Engineer &amp; systems builder · San Francisco</p>
             <h1 className="mt-6 font-display text-display font-medium text-ink">
               I build the intelligence and automation that fintech runs on.
@@ -42,19 +42,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[15rem] sm:col-span-5 sm:max-w-none">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 top-2 bottom-0 [background:radial-gradient(58%_50%_at_50%_38%,rgba(255,251,244,0.95),transparent_72%)] dark:[background:radial-gradient(56%_48%_at_50%_40%,rgba(124,178,171,0.12),transparent_74%)]"
-            />
+          <div className="order-1 sm:order-2 sm:col-span-4">
             <Image
-              src="/static/images/hero-portrait.png"
+              src="/static/images/headshot.jpg"
               alt="Nripesh Pradhan"
-              width={1200}
-              height={2179}
+              width={1000}
+              height={1000}
               priority
-              sizes="(min-width: 640px) 24rem, 60vw"
-              className="relative mx-auto block h-auto w-full max-w-[24rem] [filter:drop-shadow(0_18px_30px_rgba(40,30,20,0.16))] dark:[filter:drop-shadow(0_0_44px_rgba(190,180,162,0.22))]"
+              sizes="(min-width: 640px) 13rem, 8rem"
+              className="mx-auto h-32 w-32 rounded-full border border-border object-cover shadow-[0_1px_2px_rgba(0,0,0,0.04),0_10px_28px_-12px_rgba(0,0,0,0.25)] sm:ml-auto sm:mr-0 sm:h-52 sm:w-52"
             />
           </div>
         </div>
