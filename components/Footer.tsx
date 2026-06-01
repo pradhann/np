@@ -8,7 +8,6 @@ const elsewhere = [
   { title: 'GitHub', href: siteMetadata.github },
   { title: 'LinkedIn', href: siteMetadata.linkedin },
   { title: 'Email', href: `mailto:${siteMetadata.email}` },
-  { title: 'RSS', href: '/feed.xml' },
 ];
 
 export default function Footer() {
