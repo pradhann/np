@@ -41,3 +41,4 @@ yarn-error.log*
 .content-collections
 .claude
 public/static/images/avatar-raw.jpeg
+public/static/images/linkedin-raw.png

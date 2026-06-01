@@ -25,7 +25,7 @@ export default function AboutPage() {
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-[1fr_minmax(0,15rem)] sm:items-center sm:gap-14">
         <div className="order-1 sm:order-2">
           <Image
-            src="/static/images/avatar.jpg"
+            src="/static/images/headshot.jpg"
             alt="Nripesh Pradhan"
             width={800}
             height={800}
