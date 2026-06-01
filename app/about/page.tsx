@@ -22,16 +22,16 @@ const principles = [
 export default function AboutPage() {
   return (
     <Container className="py-16 sm:py-20">
-      <div className="grid grid-cols-1 gap-10 sm:grid-cols-[1fr_minmax(0,14rem)] sm:items-center sm:gap-14">
-        <div className="order-1 mx-auto w-full max-w-[14rem] sm:order-2 sm:mx-0">
-          <div className="overflow-hidden rounded-2xl border border-border shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-12px_rgba(0,0,0,0.18)]">
+      <div className="grid grid-cols-1 gap-10 sm:grid-cols-[1fr_minmax(0,16rem)] sm:items-center sm:gap-14">
+        <div className="order-1 mx-auto w-full max-w-[15rem] sm:order-2 sm:mx-0 sm:max-w-none">
+          <div className="overflow-hidden rounded-2xl border border-border shadow-[0_1px_2px_rgba(0,0,0,0.04),0_10px_30px_-14px_rgba(0,0,0,0.22)]">
             <Image
               src="/static/images/portrait.jpg"
               alt="Nripesh Pradhan"
-              width={1179}
-              height={1937}
+              width={1600}
+              height={2000}
               priority
-              sizes="(min-width: 640px) 14rem, 70vw"
+              sizes="(min-width: 640px) 16rem, 75vw"
               className="block h-auto w-full"
             />
           </div>
