@@ -36,6 +36,9 @@ export default function HomePage() {
             <LinkButton href="/writing" variant="outline">
               Read the writing
             </LinkButton>
+            <LinkButton href="/resume" variant="outline">
+              Resume
+            </LinkButton>
           </div>
         </div>
       </Container>
