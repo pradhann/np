@@ -42,3 +42,4 @@ yarn-error.log*
 .claude
 public/static/images/avatar-raw.jpeg
 public/static/images/linkedin-raw.png
+public/static/images/cropped-linkedin.png

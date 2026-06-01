@@ -27,9 +27,10 @@ export default function AboutPage() {
           <Image
             src="/static/images/headshot.jpg"
             alt="Nripesh Pradhan"
-            width={800}
-            height={800}
+            width={895}
+            height={895}
             priority
+            quality={92}
             sizes="(min-width: 640px) 15rem, 11rem"
             className="mx-auto h-44 w-44 rounded-full border border-border object-cover shadow-[0_1px_2px_rgba(0,0,0,0.04),0_12px_30px_-14px_rgba(0,0,0,0.28)] sm:ml-auto sm:mr-0 sm:h-60 sm:w-60"
           />
