@@ -236,12 +236,6 @@ _Lifecycle stage: Extraction → Exit_
 
 A named archetype is a reusable unit. It carries a known set of signals, a known control, and a known failure mode. The moment you can say "this is account takeover" or "this is chargeback fraud," you inherit everything the team already learned, and the investigation starts from a hypothesis instead of a blank page.
 
-Look back across all ten and the same signals keep surfacing: device-to-account ratio, geographic and carrier and language mismatch, disposable emails, transaction velocity, fast-in and fast-out timing. That recurrence is not a coincidence. It is the argument for a shared, real-time monitoring layer that scores these signals once, for every archetype, instead of rebuilding detection per incident. A queue per incident rebuilds the same detector ten times. A layer built once detects all ten, and the eleventh you have not seen yet.
-
-That is the bridge to the rest of this work: the fraud desk that triaged these patterns, and the consolidated tooling, PortalHub, that gave analysts one place to act on them with proper controls. The archetypes are why those systems had to exist.
-
-The deep dives start next, one archetype at a time, with how each was actually solved. Chargebacks are likely first, because that is where the modeling was cleanest and the gap between "verified" and "trustworthy" was widest.
-
----
+## Looking back, the same signals keep surfacing: device-to-account ratio, geographic and carrier and language mismatch, disposable emails, transaction velocity, fast-in and fast-out timing. That recurrence is not a coincidence. It is the argument for a shared, real-time monitoring layer that scores these signals once, for every archetype, instead of rebuilding detection per incident. A queue per incident rebuilds the same detector ten times. A layer built once detects all ten, and the eleventh you have not seen yet.
 
 _This primer opens a series on fraud at a consumer fintech. Each post that follows takes one archetype from this catalogue and covers, in full, how the gap was closed._
