@@ -33,17 +33,7 @@ export default async function WorkCaseStudyPage({ params }: Params) {
       eyebrow={[item.company, item.period].filter(Boolean).join(' · ') || 'Work'}
       title={item.title}
       summary={item.summary}
-      meta={
-        <>
-          {item.role && <span>{item.role}</span>}
-          {item.stack.length > 0 && (
-            <>
-              {item.role && <span aria-hidden>·</span>}
-              <span>{item.stack.join(' · ')}</span>
-            </>
-          )}
-        </>
-      }
+      meta={item.stack.length > 0 ? <span>{item.stack.join(' · ')}</span> : null}
       footer={
         <div className="mt-16 border-t border-border pt-8">
           <Link
