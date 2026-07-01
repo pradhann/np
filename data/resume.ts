@@ -3,38 +3,38 @@ export const resume = {
   company: 'Chipper Cash',
   location: 'San Francisco Bay Area',
   summary:
-    'Engineering leader with 7+ years building production ML systems, services, and data platforms across risk, fraud, and compliance. I have built risk and compliance infrastructure from scratch for a fintech serving 10M+ people across seven markets, and I lead a small, AI-first team that replaces third-party vendors with systems we fully own and understand.',
+    'Systems engineer with 7+ years designing and shipping production ML systems, real-time scoring services, and data infrastructure for financial applications. I built the quantitative and data stack from scratch for a 10M+ user financial platform across 7+ global markets: classification models, anomaly detection, signal-processing pipelines, and real-time decision engines.',
 
   metrics: [
     { value: '7+', unit: 'years', label: 'building production ML and data systems' },
-    { value: '10M+', unit: 'users', label: 'served across seven markets' },
-    { value: '$1.4M+', unit: '/ year', label: 'retired in third-party vendor costs' },
-    { value: '15+', unit: 'engineers', label: 'on the data practice I lead' },
+    { value: '10M+', unit: 'users', label: 'served by systems I designed and shipped' },
+    { value: '$1.4M+', unit: '/ year', label: 'saved by one real-time ML scoring model' },
+    { value: '6,000+', unit: '/ day', label: 'fraudulent signups blocked in production' },
   ],
 
   impact: [
     {
-      title: 'Built a compliance platform from scratch',
+      title: 'Shipped an LLM decision system with real evals',
       detail:
-        'Case management, a transaction-monitoring rule engine, and an LLM decision-support layer on top, replacing a $250K/year vendor. Two years on it has carried 53,000 alerts and 900 regulatory filings across seven markets.',
-      caseStudy: 'replacing-a-compliance-vendor',
+        'A two-model pipeline (GPT-3.5 extraction, GPT-4 decision tree) that adjudicates watchlist screening alerts. Evaluated against a double-blind golden dataset, then run over a 148K-alert backlog at four cents a decision.',
+      caseStudy: 'screengpt-the-system',
     },
     {
-      title: 'Shipped an onboarding-fraud ML model',
+      title: 'Built real-time ML scoring services',
       detail:
-        'A gradient-boosted model scoring every new user within an hour of signup. Blocks roughly 6,000 fraudulent referrals a day and drove offboarding of 19,000+ accounts.',
-      caseStudy: '',
+        'A CatBoost model that scores every new user within an hour of signup, blocking 6,000+ fraudulent referrals a day, and a card-deposit scoring service that runs velocity and rolling-aggregate features at sub-5s latency.',
+      caseStudy: 'catching-fraud-that-looked-like-growth',
     },
     {
-      title: 'Automated the fraud desk',
+      title: 'Automated a fraud desk with LLMs',
       detail:
-        'An LLM pipeline reads partner fraud reports, resolves identity, and executes account locks and fund liens, cutting handling from 30 minutes to seconds. A second pipeline answers card chargebacks before the network deadline.',
+        'An autonomous pipeline that ingests unstructured partner reports, applies LLM extraction and identity resolution, and executes account actions in under 20 seconds, down from 30 minutes of manual work. Runs 24/7.',
       caseStudy: 'automating-the-fraud-desk',
     },
     {
-      title: 'Rebuilt the data layer',
+      title: 'Rebuilt the data platform',
       detail:
-        'Set up the dbt practice 15+ engineers build on, designed the canonical financial models, replaced a managed runtime with one we own, and shipped the alerting that catches what the alerts miss.',
+        'Led company-wide dbt adoption, designed the canonical financial data models 15+ engineers build on, replaced a managed runtime with a self-hosted one, and shipped the monitoring that catches silent failures.',
       caseStudy: 'replacing-dbt-cloud',
     },
   ],
@@ -45,54 +45,54 @@ export const resume = {
       company: 'Chipper Cash',
       period: 'Oct 2025 - Present',
       summary:
-        'Own fraud, compliance, and risk-data systems across seven markets, leading a small, AI-first team. Report to the Chief Compliance Officer.',
+        'Lead a quantitative engineering team building ML systems, real-time pipelines, and automated decision engines across 7+ global markets.',
       bullets: [
-        'Built a full compliance platform from scratch, case management, transaction monitoring, and a dbt-based rules engine, replacing a vendor that cost a quarter of a million dollars a year.',
-        'Shipped ScreenGPT, an LLM decision-support layer for sanctions-watchlist clearance, evaluated against a golden dataset (78.4% accuracy on 269 cases, 92% precision on no-match) and integrated directly into the analyst queue.',
-        'Built an LLM-powered fraud-alert pipeline that ingests partner reports, extracts the facts, resolves identity in Snowflake, and executes account locks and fund liens, running 24/7.',
-        'Designed an LLM-driven monitoring framework that gives every critical subsystem six standardized signal types (health, volume, latency, anomaly, coverage, distribution) from a single YAML configuration.',
+        'Led a multi-year systems strategy replacing third-party vendor platforms with purpose-built quantitative systems, cutting $500K+ a year in costs and reducing end-to-end decision latency by over 80%.',
+        'Designed and built a high-throughput processing platform from scratch in Python and PostgreSQL, orchestrating 53,000+ events, 20,000+ investigation workflows, and 900+ automated filings across 8 currencies with deterministic audit trails.',
+        'Architected a real-time signal-detection pipeline evaluating millions of financial transactions against 20+ configurable statistical rule sets, surfacing 2,000+ actionable signals daily at sub-5-minute latency.',
+        'Built a dual-model NLP system for entity resolution and probabilistic match scoring across millions of records, achieving 85% precision and 95% recall against custom-curated international datasets.',
+        'Engineered an autonomous pipeline that ingests unstructured reports via API, applies LLM-based extraction and identity resolution, and executes automated actions in under 20 seconds, down from 30 minutes.',
       ],
-      tags: ['Compliance systems', 'LLM operations', 'Team leadership'],
-      caseStudy: 'replacing-a-compliance-vendor',
+      tags: ['ML systems', 'LLM engineering', 'Team leadership'],
+      caseStudy: 'screengpt-the-system',
     },
     {
       role: 'Tech Lead, Risk & Growth',
       company: 'Chipper Cash',
       period: 'Jan 2022 - Oct 2025',
       summary:
-        'Promoted to Staff. Designed and shipped ML-powered fraud detection and the production services around it.',
+        'Promoted to Staff. Designed and shipped ML-powered scoring systems and production services handling real-time financial data.',
       bullets: [
-        'Architected an onboarding-fraud ML model (CatBoost, percentile-normalized features) that scores every new user; it blocks 6,000+ fraudulent referrals a day and drove the offboarding of 19,000+ fraud accounts.',
-        'Built a real-time card-deposit scoring service with velocity and rolling-average features, serving production traffic under 5s end-to-end.',
-        'Built an automated chargeback-decline pipeline that generates proof-of-delivery evidence and submits responses through the processor API inside the network deadline, after a coordinated attack cost the company millions.',
-        'Shipped a merchant-parsing service that classifies card-transaction strings via LLM-powered extraction, returning merchant, category, and logo in under one second per request.',
-        'Reduced account-takeover incidents from 30+ a day to under 10 a quarter with selfie-based step-up authentication and device blocklisting.',
+        'Designed and deployed a real-time ML scoring model combining IP geolocation, behavioral timing, device fingerprinting, and identity-graph signals. Blocked 6,000+ bad actors a day, saving $1.4M+ a year.',
+        'Built a real-time ML scoring service for every card deposit, combining velocity features, rolling statistical aggregates, and behavioral signals at sub-5s latency. Intercepts $20K+ a day in losses.',
+        'Deployed a real-time NLP classification service that parses unstructured transaction data, extracting merchant identity, category, and metadata with sub-second latency at production scale.',
+        'Reduced account-takeover events from 30+ a day to under 10 a quarter with a multi-signal authentication system combining biometric verification, device reputation scoring, and behavioral anomaly detection.',
+        'Automated a dispute engine applying rule-based qualification, generating structured evidence packages, and submitting via processor API. Recovered $100K+ in disputed funds.',
       ],
-      tags: ['Fraud ML', 'Production services', 'Real-time scoring'],
-      caseStudy: '',
+      tags: ['Real-time ML', 'Production services', 'Fraud detection'],
+      caseStudy: 'catching-fraud-that-looked-like-growth',
     },
     {
       role: 'Senior Data Scientist',
       company: 'Chipper Cash',
       period: 'Feb 2021 - Jan 2022',
-      summary: 'Core financial data infrastructure, growth analytics, and fraud investigations.',
+      summary:
+        'Built core financial data infrastructure, statistical analysis frameworks, and production monitoring systems.',
       bullets: [
-        'Led company-wide dbt adoption: set up the practice in the mono-repo, defined model structure and testing standards, wrote the onboarding guide, and trained 15+ engineers who now build on it.',
-        'Designed the two canonical financial data models (transfers, ledger entries) that still power the company analytics, dashboards, fraud features, and internal tools.',
-        'Built RADOS, a campaign-delivery engine (Python + Dask) that resolves segments and bulk-writes notifications, reaching ~900K users in two hours per campaign run.',
-        'Co-built DMS, an in-house data-monitoring system that watches every important table and auto-segments failing populations so analysts get root cause in the alert itself.',
+        'Led company-wide dbt adoption and designed the foundational financial data models powering all analytics, dashboards, and internal tools. Established SQL standards and code review across a 15+ person engineering team.',
+        'Conducted quantitative investigations that shaped policy: surfaced referral-abuse patterns during a 50K-a-day user spike, analyzed loss distributions by typology, and identified anomalous return rates that led to new automated controls.',
+        'Built a self-service experimentation platform enabling targeted launches reaching 900K+ users, and production alerting monitoring transaction rates across all payment providers in real time.',
       ],
-      tags: ['Data platform', 'dbt', 'Growth systems'],
+      tags: ['Data platform', 'dbt', 'Experimentation'],
       caseStudy: 'replacing-dbt-cloud',
     },
     {
       role: 'Senior Consultant, Data Science',
       company: 'Logic (acquired by Accenture)',
       period: 'Oct 2018 - Feb 2021',
-      summary: 'Client-facing data-science consulting for Fortune 500 retail.',
+      summary: 'Client-facing quantitative consulting for Fortune 500 retail.',
       bullets: [
-        'Delivered predictive analytics for Fortune 500 retailers including Best Buy and Kendra Scott, leading engagements end to end from discovery to deployment.',
-        'Presented recommendations on demand forecasting, inventory optimization, and pricing to senior merchandising leadership.',
+        'Delivered predictive modeling and quantitative analytics for Best Buy and Kendra Scott, leading engagements end to end: demand forecasting, inventory optimization, and pricing strategy, presented to senior leadership.',
       ],
       tags: ['Consulting', 'Forecasting'],
     },
@@ -100,43 +100,47 @@ export const resume = {
 
   systems: [
     {
-      category: 'Compliance & monitoring',
+      category: 'Real-time ML & scoring',
       items: [
         {
-          name: 'Compliance Case-Management Platform',
-          detail: 'in-house, replacing a vendor',
-          caseStudy: 'replacing-a-compliance-vendor',
+          name: 'User Onboarding Score',
+          detail: 'CatBoost; IP, device, and identity-graph signals; 6,000+ blocks a day',
+          caseStudy: 'catching-fraud-that-looked-like-growth',
         },
         {
-          name: 'LLM Watchlist Decision-Support',
-          detail: 'ScreenGPT, with evaluation harness',
+          name: 'Card-Deposit Scoring Service',
+          detail: 'velocity and rolling aggregates at sub-5s latency',
           caseStudy: '',
         },
         {
-          name: 'Transaction-Monitoring Rule Engine',
-          detail: '35 rules, seven markets',
-          caseStudy: 'standardizing-detection-rules',
+          name: 'Account-Takeover Defense',
+          detail: 'multi-signal authentication; 30+ a day to under 10 a quarter',
+          caseStudy: '',
+        },
+        {
+          name: 'Merchant Parsing Service',
+          detail: 'NLP classification of raw transaction strings, sub-second',
+          caseStudy: '',
         },
       ],
     },
     {
-      category: 'Fraud detection & response',
+      category: 'LLM systems',
       items: [
-        { name: 'User Onboarding Score', detail: 'CatBoost, scored within an hour', caseStudy: '' },
         {
-          name: 'Real-Time Transaction Scoring',
-          detail: 'card-deposit fraud, under 5s',
+          name: 'Watchlist Decision Support',
+          detail: 'two-model LLM pipeline with golden-dataset evals',
+          caseStudy: 'screengpt-the-system',
+        },
+        {
+          name: 'Fraud-Desk Automation',
+          detail: 'LLM extraction and identity resolution; 30 minutes to 20 seconds',
+          caseStudy: 'automating-the-fraud-desk',
+        },
+        {
+          name: 'LLM Monitoring Framework',
+          detail: 'six standardized signal types from one YAML config',
           caseStudy: '',
-        },
-        {
-          name: 'Fraud-Alert Automation Pipeline',
-          detail: 'Gmail + LLM, 30 min to seconds',
-          caseStudy: 'automating-the-fraud-desk',
-        },
-        {
-          name: 'Chargeback Decline Automation',
-          detail: 'inside the 24-hour network window',
-          caseStudy: 'automating-the-fraud-desk',
         },
       ],
     },
@@ -145,34 +149,37 @@ export const resume = {
       items: [
         {
           name: 'dbt Models',
-          detail: 'the canonical models every downstream system is built on',
+          detail: 'the canonical financial models every downstream system is built on',
           caseStudy: 'replacing-dbt-cloud',
         },
         {
-          name: 'Data Monitoring System (DMS)',
-          detail: 'config-driven, auto-segmented',
-          caseStudy: '',
+          name: 'Transaction Signal Engine',
+          detail: '20+ statistical rule sets; 2,000+ signals a day at sub-5-minute latency',
+          caseStudy: 'standardizing-detection-rules',
         },
         {
-          name: 'LLM Monitoring Framework',
-          detail: 'YAML signals across subsystems',
-          caseStudy: '',
-        },
-        {
-          name: 'Merchant Parsing Service',
-          detail: 'LLM extraction, under 1s per transaction',
+          name: 'Data Monitoring System',
+          detail: 'config-driven checks with auto-segmented root cause',
           caseStudy: '',
         },
       ],
     },
     {
-      category: 'Growth systems',
+      category: 'Platforms & growth',
       items: [
-        { name: 'Campaign Delivery Engine', detail: '900K users per run', caseStudy: '' },
-        { name: 'User Engagement Score', detail: 'per-product, drives retention', caseStudy: '' },
+        {
+          name: 'Case Processing Platform',
+          detail: '53K+ events and 900+ automated filings with deterministic audit trails',
+          caseStudy: 'replacing-a-compliance-vendor',
+        },
+        {
+          name: 'Campaign Delivery Engine',
+          detail: 'Python + Dask; 900K users per run',
+          caseStudy: '',
+        },
         {
           name: 'Risk-Aware Payout Pipeline',
-          detail: 're-checks flags at money movement',
+          detail: 're-checks risk flags at the moment money moves',
           caseStudy: '',
         },
       ],
@@ -181,11 +188,14 @@ export const resume = {
 
   skills: [
     { group: 'Languages', items: ['Python', 'SQL', 'TypeScript'] },
-    { group: 'Data', items: ['dbt', 'Snowflake', 'Postgres', 'Fivetran', 'Airflow'] },
-    { group: 'ML / AI', items: ['LLMs', 'OpenAI', 'CatBoost', 'Dask', 'NLP'] },
+    { group: 'ML / AI', items: ['LLMs', 'OpenAI API', 'CatBoost', 'scikit-learn', 'NLP'] },
     {
-      group: 'Services & infra',
-      items: ['Flask', 'Docker', 'GCP', 'Bazel', 'Retool', 'GitHub Actions'],
+      group: 'Data systems',
+      items: ['dbt', 'Snowflake', 'PostgreSQL', 'Airflow', 'Pandas', 'NumPy'],
+    },
+    {
+      group: 'Infrastructure',
+      items: ['Docker', 'GCP', 'AWS', 'Flask', 'Neo4j', 'Pinecone', 'Datadog'],
     },
   ],
 
