@@ -67,7 +67,8 @@ const prettyCodeOptions = {
 };
 
 const mdxOptions: Parameters<typeof compileMDX>[2] = {
-  remarkPlugins: [remarkGfm, remarkMath],
+  // singleDollarTextMath disabled so literal dollar amounts ($6,000) are not parsed as inline math.
+  remarkPlugins: [remarkGfm, [remarkMath, { singleDollarTextMath: false }]],
   rehypePlugins: [
     rehypeMermaid,
     rehypeSlug,
