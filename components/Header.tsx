@@ -32,7 +32,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={clsx(
-                    'rounded-full px-3 py-1.5 text-sm transition-colors',
+                    'rounded-full px-3 py-1.5 text-sm transition-colors hover:bg-ink/5',
                     active ? 'text-accent' : 'text-ink-muted hover:text-ink'
                   )}
                 >

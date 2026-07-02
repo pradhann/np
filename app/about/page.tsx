@@ -2,16 +2,18 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import Container from '@/components/Container';
+import Link from '@/components/Link';
 import LinkButton from '@/components/LinkButton';
 import Prose from '@/components/Prose';
 
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Nripesh Pradhan, an engineer who builds intelligence, automation, and risk systems for fintech.',
+    'Nripesh Pradhan builds production ML and LLM systems for fintech: models that move money, pipelines with real evals, and the data layer underneath.',
 };
 
 const principles = [
+  'An LLM system without an eval is a demo. Build the golden dataset before you build the pipeline.',
   'Get the data layer right first. Everything downstream inherits its quality.',
   'Prefer systems you can open up. A vendor black box you cannot inspect is a liability dressed up as a convenience.',
   'Automate the judgment, not just the clicks. The value is in encoding the decision, not scripting the busywork.',
@@ -37,13 +39,13 @@ export default function AboutPage() {
         </div>
         <div className="order-2 sm:order-1">
           <p className="eyebrow">About</p>
-          <h1 className="mt-4 font-display text-4xl font-medium leading-[1.05] text-ink sm:text-5xl">
+          <h1 className="mt-4 font-display text-title font-medium text-ink">
             Hello, I&rsquo;m&nbsp;Nripesh.
           </h1>
           <p className="mt-5 max-w-prose text-lg leading-relaxed text-ink-muted">
-            I&rsquo;m an engineer who builds the systems fintech depends on: the pipelines that have
-            to be right every time, the models that decide whether money moves, and the data layers
-            everything else is built on.
+            I build production ML and LLM systems for fintech: models that decide in real time
+            whether money moves, LLM pipelines that hold up under real evals, and the data layer
+            everything else stands on.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <LinkButton href="/work">See the work</LinkButton>
@@ -71,23 +73,37 @@ export default function AboutPage() {
             data-transformations practice that more than fifteen engineers build on.
           </p>
           <p>
-            From there the work moved steadily closer to the things that cost real money. As a tech
-            lead on risk and growth I designed and shipped fraud-detection systems: a model that
-            scores every new user for fraud risk, real-time transaction scoring, account-takeover
-            defenses. Today, as Head of Risk Intelligence and Automations, I own fraud, compliance,
-            and risk-data systems across seven markets, leading a small, AI-first team that has been
-            replacing third-party vendors with in-house systems we fully understand and control.
+            From there the work moved steadily closer to the things that cost real money. As a
+            staff-level tech lead on risk I designed and shipped the fraud-detection stack: a model
+            that scores every new user, real-time transaction scoring, account-takeover defenses.
+            Today, as Head of Risk Intelligence and Automations, I lead a small team building ML and
+            LLM systems across seven markets, replacing vendor black boxes with systems we can open
+            up, measure, and trust.
           </p>
 
           <h2>What I&rsquo;ve built</h2>
           <p>
             Most of my favorite work has the same shape: take something slow, manual, and
-            vendor-dependent, and turn it into a system that is fast, owned, and observable. A
-            compliance platform that replaced a six-figure vendor contract. An onboarding-fraud
-            model that blocks thousands of fraudulent referrals a day. An in-house identity stack
-            (document verification, liveness, sanctions screening) that retired roughly $1.4M a year
-            in vendor fees. A pipeline that reads partner fraud reports, understands them with an
-            LLM, and acts in seconds instead of half an hour.
+            vendor-dependent, and turn it into a system that is fast, owned, and measured.{' '}
+            <Link href="/work/screengpt-the-system">
+              An LLM pipeline that adjudicates watchlist alerts
+            </Link>
+            , evaluated against a double-blind golden dataset before it touched a single real case,
+            then run over a 148,000-alert backlog at four cents a decision.{' '}
+            <Link href="/work/catching-fraud-that-looked-like-growth">
+              A fraud model that blocks six thousand bad signups a day
+            </Link>
+            .{' '}
+            <Link href="/work/automating-the-fraud-desk">
+              A pipeline that reads partner fraud reports with an LLM and acts in twenty seconds
+              instead of thirty minutes
+            </Link>
+            .{' '}
+            <Link href="/work/replacing-a-compliance-vendor">
+              A platform that replaced a six-figure vendor contract
+            </Link>
+            . The pattern I care about is the middle step: you do not ship a model because it demos
+            well, you ship it because you built the eval that proves it.
           </p>
 
           <h2>How I think about building</h2>
@@ -100,10 +116,15 @@ export default function AboutPage() {
           <h2>Outside the work</h2>
           <p>
             I think a lot about risk and uncertainty, which spills over into chess and poker. I
-            follow football closely and recently fell in love with pickleball. I read broadly and
-            eclectically, more flâneur than scholar. And I write: essays on the systems behind
-            fintech and the craft of building, and, increasingly, on the books and ideas I cannot
-            stop turning over.
+            follow football closely and recently fell in love with pickleball. And I read seriously
+            and eclectically, and write <Link href="/writing">essays</Link> on the books I keep
+            turning over, because explaining a book clearly turns out to be a lot like explaining a
+            system. It is how you find out what you actually think.
+          </p>
+          <p>
+            Right now I am deep in LLM evals and the question of when to trust a model with a real
+            decision. If you are working on the same problems,{' '}
+            <Link href="/contact">I would like to hear from you</Link>.
           </p>
         </Prose>
       </div>

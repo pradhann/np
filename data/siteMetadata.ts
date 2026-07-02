@@ -3,9 +3,9 @@ export const siteMetadata = {
   title: 'Nripesh Pradhan',
   /** Used for meta description / Open Graph. */
   description:
-    'Nripesh Pradhan builds intelligence and automation systems for fintech: fraud, risk, and money movement at scale. Engineering leader, systems builder, and writer.',
+    'Nripesh Pradhan builds production ML and LLM systems for fintech: fraud models, real-time scoring, and the data infrastructure underneath. Engineer, systems builder, and writer.',
   /** Short positioning line used in the header and hero. */
-  role: 'Builds intelligence & automation systems for fintech',
+  role: 'Builds production ML & LLM systems for fintech',
   siteUrl: 'https://nripeshpradhan.com',
   siteRepo: 'https://github.com/pradhann/np',
   locale: 'en-US',

@@ -4,7 +4,7 @@ import Container from '@/components/Container';
 import EmptyState from '@/components/EmptyState';
 import Link from '@/components/Link';
 import PageHeader from '@/components/PageHeader';
-import { getAllTags } from '@/lib/posts';
+import { getAllTags, getTagDisplayNames } from '@/lib/posts';
 
 export const metadata: Metadata = {
   title: 'Tags',
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 export default function TagsPage() {
   const tags = getAllTags();
+  const names = getTagDisplayNames();
   const sorted = Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
 
   return (
@@ -24,9 +25,9 @@ export default function TagsPage() {
             <Link
               key={tag}
               href={`/tags/${tag}`}
-              className="rounded-full border border-border px-3.5 py-1.5 text-sm text-ink-muted transition-colors hover:border-accent hover:text-accent"
+              className="rounded-full border border-border px-3 py-1 font-mono text-xs text-ink-muted transition-colors hover:border-accent hover:text-accent"
             >
-              {tag} <span className="ml-1 text-ink-faint">{tags[tag]}</span>
+              {names[tag] ?? tag} <span className="ml-1 text-ink-faint">{tags[tag]}</span>
             </Link>
           ))}
         </div>

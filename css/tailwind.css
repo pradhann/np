@@ -8,10 +8,10 @@
 @layer base {
   :root {
     --canvas: 250 248 244;
-    --surface: 255 255 255;
+    --surface: 255 254 250;
     --ink: 28 27 25;
     --ink-muted: 92 88 80;
-    --ink-faint: 142 137 127;
+    --ink-faint: 120 114 103;
     --border: 228 223 213;
     --accent: 26 61 58;
     --accent-hover: 16 40 38;
@@ -21,7 +21,7 @@
 
   .dark {
     --canvas: 20 19 16;
-    --surface: 31 30 24;
+    --surface: 36 35 29;
     --ink: 236 232 223;
     --ink-muted: 165 159 146;
     --ink-faint: 122 117 106;
@@ -35,6 +35,11 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+  }
+
+  /* Anchored headings clear the sticky header. */
+  [id] {
+    scroll-margin-top: 5rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -152,8 +157,15 @@
     @apply h-auto max-w-full;
   }
 
-  /* Prose tables: scroll horizontally on narrow screens instead of overflowing. */
-  .prose table {
-    @apply block max-w-full overflow-x-auto whitespace-normal;
+  /* Prose tables: scroll inside a wrapper on narrow screens; keep table semantics. */
+  .prose .table-wrap {
+    @apply my-7 max-w-full overflow-x-auto;
+  }
+  .prose .table-wrap table {
+    @apply my-0;
+  }
+  .prose td,
+  .prose th {
+    font-variant-numeric: tabular-nums;
   }
 }

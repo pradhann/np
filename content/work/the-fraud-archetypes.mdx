@@ -1,5 +1,5 @@
 ---
-title: 'Fraud Archetypes'
+title: 'The fraud archetypes'
 date: '2026-06-01'
 summary: 'A primer on the fraud archetypes of consumer fintech: how they work, the tells that give them away, and how to stop them.'
 company: 'Chipper Cash'
@@ -7,8 +7,8 @@ role: 'Head of Risk Intelligence & Automations'
 period: '2021-2026'
 stack: ['Fraud detection', 'ML', 'Snowflake', 'Python']
 tags: ['Fraud', 'Detection', 'Field guide']
-order: 0
-featured: true
+order: 3
+featured: false
 ---
 
 A recurring fraud pattern is a fraud archetype: a reusable exploit defined by three fixed properties, a known entry point, a known way of extracting value, and a known set of tells. Classifying a case as a known archetype is what makes the fraud controllable. Instead of investigating each instance as a novelty, we can engineer against a pattern we have already seen. That is the value of a catalogue: a fraud solved once is a fraud solved for every case that matches it.
@@ -21,11 +21,6 @@ What follows is that catalogue: the exploits we paid for in fraud losses, with t
 flowchart LR
     A["ENTRY<br/>account gained"] --> B["EXTRACTION<br/>value enters the account"] --> C["EXIT<br/>value leaves irreversibly"]
     C -. "laundering begins" .-> D["PLACEMENT → LAYERING → INTEGRATION<br/>crypto on-chain, cash-out to neobank"]
-
-    style A fill:#1f2937,stroke:#374151,color:#fff
-    style B fill:#1f2937,stroke:#374151,color:#fff
-    style C fill:#7c2d12,stroke:#9a3412,color:#fff
-    style D fill:#1e3a5f,stroke:#1e40af,color:#fff
 ```
 
 Every archetype, regardless of mechanism, moves value through three stages.
@@ -46,9 +41,6 @@ flowchart TB
     S4["transaction velocity"] --> F
     S5["fast-in, fast-out timing"] --> F
     F --> R["one detection layer,<br/>every archetype"]
-
-    style F fill:#1e3a5f,stroke:#1e40af,color:#fff
-    style R fill:#065f46,stroke:#047857,color:#fff
 ```
 
 ## Referral fraud
@@ -146,7 +138,7 @@ Three variants recurred. **Reversal abuse:** deposit, spend, then return the ACH
 - Deposit, spend, reverse timing that rides the finalization lag
 - Geographic mismatch between where the account onboarded and where it operates
 
-**Closing the gap.** The signal that mattered was timing against settlement: a legitimate user does not deposit, immediately spend, and reverse in a tight loop. Combining return-rate priors by originating bank with real-time behavioral scoring let us price the risk before finalizing. The deep dive covers how the bank-level priors were built and why the corridor was ultimately closed.
+**Closing the gap.** The signal that mattered was timing against settlement: a legitimate user does not deposit, immediately spend, and reverse in a tight loop. Combining return-rate priors by originating bank with real-time behavioral scoring let us price the risk before finalizing.
 
 ## USD virtual-account fraud
 
@@ -166,7 +158,7 @@ The mechanics were a race. Funds land, the user cashes out fast through withdraw
 - Invoices that look legitimate but fail closer scrutiny
 - Third-party funding with no plausible relationship to the account holder
 
-**Closing the gap.** The interim control was a manual review queue staffed jointly by fraud and ops, with all third-party deposits placed on hold before release. The durable signal was the gap between inbound credit and cash-out speed, combined with funding-source relationship. The deep dive covers how document review and third-party holds were tightened without choking legitimate freelance income.
+**Closing the gap.** The interim control was a manual review queue staffed jointly by fraud and ops, with all third-party deposits placed on hold before release. The durable signal was the gap between inbound credit and cash-out speed, combined with funding-source relationship.
 
 ## Double-refund fraud
 
@@ -182,7 +174,7 @@ _Lifecycle stage: Extraction_
 - Duplicate refund references pointing at one original charge
 - Refund requests clustered around known processing-lag windows
 
-**Closing the gap.** The signal is reconciliation: a single transaction ID should map to at most one recovery path. The control comes from binding refunds and disputes to the same ledger entry and detecting when both fire. The deep dive will cover the reconciliation logic.
+**Closing the gap.** The signal is reconciliation: a single transaction ID should map to at most one recovery path. The control comes from binding refunds and disputes to the same ledger entry and detecting when both fire.
 
 ## Crypto arbitrage fraud
 
@@ -198,7 +190,7 @@ _Lifecycle stage: Extraction → Exit_
 - Concentration on specific pairs or corridors where the gap is largest
 - Accounts whose entire activity is rate-sensitive crypto churn and nothing else
 
-**Closing the gap.** The tell is behavioral monotony: a real user does not exist only to churn one pair against a refresh clock. The control narrows quote validity and scores accounts whose activity is purely rate-sensitive. The deep dive will cover quote-window hardening.
+**Closing the gap.** The tell is behavioral monotony: a real user does not exist only to churn one pair against a refresh clock. The control narrows quote validity and scores accounts whose activity is purely rate-sensitive.
 
 ## Fake-agent fraud
 
@@ -214,7 +206,7 @@ _Lifecycle stage: Entry → Exit_
 - Clusters of victim complaints that trace back to a single operator
 - Off-platform solicitation, where the approach happens outside the app entirely
 
-**Closing the gap.** The signal is the mismatch between agent-shaped transaction behavior and authorized-agent status, plus complaint clustering around one node. The control verifies and visibly distinguishes real agents. The deep dive will cover agent attestation.
+**Closing the gap.** The signal is the mismatch between agent-shaped transaction behavior and authorized-agent status, plus complaint clustering around one node. The control verifies and visibly distinguishes real agents.
 
 ## Airtime irregularities
 
@@ -230,12 +222,12 @@ _Lifecycle stage: Extraction → Exit_
 - Reseller-style patterns, where buying behavior looks like distribution
 - Reversal or bonus exploitation, repeatedly triggering promo or reversal paths
 
-**Closing the gap.** The tell is consumption that does not look like consumption: volume and cadence that only make sense for resale or promo farming. The control caps and scores airtime activity against a personal-use baseline. The deep dive will cover the Kenya-specific mechanics.
+**Closing the gap.** The tell is consumption that does not look like consumption: volume and cadence that only make sense for resale or promo farming. The control caps and scores airtime activity against a personal-use baseline.
 
 ## Why archetypes
 
 A named archetype is a reusable unit. It carries a known set of signals, a known control, and a known failure mode. The moment you can say "this is account takeover" or "this is chargeback fraud," you inherit everything the team already learned, and the investigation starts from a hypothesis instead of a blank page.
 
-## Looking back, the same signals keep surfacing: device-to-account ratio, geographic and carrier and language mismatch, disposable emails, transaction velocity, fast-in and fast-out timing. That recurrence is not a coincidence. It is the argument for a shared, real-time monitoring layer that scores these signals once, for every archetype, instead of rebuilding detection per incident. A queue per incident rebuilds the same detector ten times. A layer built once detects all ten, and the eleventh you have not seen yet.
+Looking back, the same signals keep surfacing: device-to-account ratio, geographic and carrier and language mismatch, disposable emails, transaction velocity, fast-in and fast-out timing. That recurrence is not a coincidence. It is the argument for a shared, real-time monitoring layer that scores these signals once, for every archetype, instead of rebuilding detection per incident. A queue per incident rebuilds the same detector ten times. A layer built once detects all ten, and the eleventh you have not seen yet.
 
 _This primer opens a series on fraud at a consumer fintech. Each post that follows takes one archetype from this catalogue and covers, in full, how the gap was closed._

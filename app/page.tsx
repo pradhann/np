@@ -8,9 +8,9 @@ import SectionHeading from '@/components/SectionHeading';
 import { featuredWork, publishedPosts } from '@/lib/posts';
 
 const stats = [
-  { value: '7+ years', label: 'building production ML and data systems' },
-  { value: '10M+ users', label: 'served across seven markets' },
-  { value: '$1.4M+ / yr', label: 'retired in third-party vendor costs' },
+  { value: '7+ years', label: 'building production ML systems' },
+  { value: '148K+ alerts', label: 'adjudicated by an LLM pipeline I built' },
+  { value: '$1.4M+ / yr', label: 'in fraud losses prevented by one ML model' },
 ];
 
 export default function HomePage() {
@@ -19,17 +19,17 @@ export default function HomePage() {
 
   return (
     <>
-      <Container className="py-24 sm:py-32">
+      <Container className="pb-14 pt-24 sm:pb-16 sm:pt-32">
         <div className="max-w-3xl">
-          <p className="eyebrow">Engineer &amp; systems builder · San Francisco</p>
+          <p className="eyebrow">ML engineer &amp; systems builder · San Francisco</p>
           <h1 className="mt-6 font-display text-display font-medium text-ink">
             I build the intelligence and automation that fintech runs on.
           </h1>
           <p className="mt-7 max-w-prose text-lg leading-relaxed text-ink-muted">
-            For seven years I&rsquo;ve designed and shipped production ML systems, data platforms,
-            and risk infrastructure at Chipper Cash, a fintech serving 10M+ people across seven
-            African markets. I&rsquo;m currently Head of Risk Intelligence &amp; Automations there,
-            and I write about systems, risk, and the books I cannot stop turning over.
+            I lead Risk Intelligence &amp; Automations at Chipper Cash, where I design and ship the
+            production side of ML: fraud models, LLM pipelines with real evals, and real-time
+            scoring that moves money or stops it. I also write about systems, risk, and the books I
+            cannot stop turning over.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <LinkButton href="/work">See the work</LinkButton>
@@ -99,13 +99,13 @@ export default function HomePage() {
       </Container>
 
       <Container className="pt-24">
-        <div className="rounded-2xl border border-border bg-surface px-8 py-14 text-center sm:px-14">
+        <div className="rounded-2xl border border-border bg-surface px-8 py-12 sm:px-14">
           <h2 className="font-display text-2xl font-medium text-ink">Building something hard?</h2>
-          <p className="mx-auto mt-3 max-w-md leading-relaxed text-ink-muted">
-            I&rsquo;m always glad to talk about fintech, risk systems, and turning messy problems
-            into reliable software.
+          <p className="mt-3 max-w-prose leading-relaxed text-ink-muted">
+            If you are working on fraud, risk, or an LLM system that has to hold up in production, I
+            would like to hear about it.
           </p>
-          <div className="mt-7 flex justify-center">
+          <div className="mt-7">
             <LinkButton href="/contact">Get in touch</LinkButton>
           </div>
         </div>

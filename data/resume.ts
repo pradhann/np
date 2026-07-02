@@ -3,20 +3,20 @@ export const resume = {
   company: 'Chipper Cash',
   location: 'San Francisco Bay Area',
   summary:
-    'Systems engineer with 7+ years designing and shipping production ML systems, real-time scoring services, and data infrastructure for financial applications. I built the quantitative and data stack from scratch for a 10M+ user financial platform across 7+ global markets: classification models, anomaly detection, signal-processing pipelines, and real-time decision engines.',
+    'Machine learning engineer with 7+ years designing and shipping production ML and LLM systems for a 10M+ user financial platform across 7+ global markets. I built the risk and compliance stack from scratch, real-time scoring services, LLM decision pipelines with rigorous evals, anomaly detection, and the data infrastructure underneath, operating at staff scope leading a quantitative engineering team.',
 
   metrics: [
     { value: '7+', unit: 'years', label: 'building production ML and data systems' },
     { value: '10M+', unit: 'users', label: 'served by systems I designed and shipped' },
-    { value: '$1.4M+', unit: '/ year', label: 'saved by one real-time ML scoring model' },
-    { value: '6,000+', unit: '/ day', label: 'fraudulent signups blocked in production' },
+    { value: '$1.4M+', unit: '/yr', label: 'in fraud losses prevented by one ML model' },
+    { value: '6,000+', unit: '/day', label: 'fraudulent signups blocked in production' },
   ],
 
   impact: [
     {
       title: 'Shipped an LLM decision system with real evals',
       detail:
-        'A two-model pipeline (GPT-3.5 extraction, GPT-4 decision tree) that adjudicates watchlist screening alerts. Evaluated against a double-blind golden dataset, then run over a 148K-alert backlog at four cents a decision.',
+        'A two-model LLM pipeline that adjudicates watchlist screening alerts, validated against a double-blind golden dataset before launch, then run over a 148K-alert backlog at four cents a decision with precision and recall tracked in production.',
       caseStudy: 'screengpt-the-system',
     },
     {
@@ -47,7 +47,7 @@ export const resume = {
       summary:
         'Lead a quantitative engineering team building ML systems, real-time pipelines, and automated decision engines across 7+ global markets.',
       bullets: [
-        'Led a multi-year systems strategy replacing third-party vendor platforms with purpose-built quantitative systems, cutting $500K+ a year in costs and reducing end-to-end decision latency by over 80%.',
+        'Drove the multi-year systems strategy, begun as tech lead, of replacing third-party vendor platforms with purpose-built quantitative systems, cutting $500K+ a year in costs and reducing end-to-end decision latency by over 80%.',
         'Designed and built a high-throughput processing platform from scratch in Python and PostgreSQL, orchestrating 53,000+ events, 20,000+ investigation workflows, and 900+ automated filings across 8 currencies with deterministic audit trails.',
         'Architected a real-time signal-detection pipeline evaluating millions of financial transactions against 20+ configurable statistical rule sets, surfacing 2,000+ actionable signals daily at sub-5-minute latency.',
         'Built a dual-model NLP system for entity resolution and probabilistic match scoring across millions of records, achieving 85% precision and 95% recall against custom-curated international datasets.',
@@ -57,11 +57,11 @@ export const resume = {
       caseStudy: 'screengpt-the-system',
     },
     {
-      role: 'Tech Lead, Risk & Growth',
+      role: 'Staff Tech Lead, Risk & Growth',
       company: 'Chipper Cash',
       period: 'Jan 2022 - Oct 2025',
       summary:
-        'Promoted to Staff. Designed and shipped ML-powered scoring systems and production services handling real-time financial data.',
+        'Promoted to Staff in role. Designed and shipped ML-powered scoring systems and production services handling real-time financial data.',
       bullets: [
         'Designed and deployed a real-time ML scoring model combining IP geolocation, behavioral timing, device fingerprinting, and identity-graph signals. Blocked 6,000+ bad actors a day, saving $1.4M+ a year.',
         'Built a real-time ML scoring service for every card deposit, combining velocity features, rolling statistical aggregates, and behavioral signals at sub-5s latency. Intercepts $20K+ a day in losses.',
@@ -216,8 +216,8 @@ export const resume = {
       period: '',
     },
     {
-      school: 'Harvard Business School',
-      detail: 'HBX CORe, business analytics and economics',
+      school: 'HBX CORe, Harvard Business School',
+      detail: 'Business analytics and economics',
       period: '',
     },
   ],

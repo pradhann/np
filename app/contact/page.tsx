@@ -31,7 +31,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Get in touch"
-        intro="I’m always glad to talk about building, fintech, risk systems, and hard problems worth solving, whether that’s a role, a collaboration, or just a good conversation."
+        intro="I’m always glad to talk about production ML, LLM systems and evals, fraud and risk, or the craft of building. A role, a collaboration, a founder working on a hard fintech problem, or a good argument about Dostoevsky all qualify. I read everything and usually reply within a couple of days."
       />
       <div className="mt-4 divide-y divide-border">
         {methods.map((method) => (

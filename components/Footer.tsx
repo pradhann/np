@@ -17,12 +17,13 @@ export default function Footer() {
         <div className="max-w-sm">
           <p className="font-display text-lg text-ink">Nripesh Pradhan</p>
           <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-            {siteMetadata.role}. Currently in the {siteMetadata.location}.
+            I build production ML and LLM systems for fintech. Currently in the{' '}
+            {siteMetadata.location}.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:justify-items-end">
           <nav className="flex flex-col gap-2.5">
-            <p className="eyebrow mb-1">Pages</p>
+            <p className="eyebrow mb-1">Index</p>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -50,7 +51,12 @@ export default function Footer() {
       <div className="border-t border-border/70">
         <Container className="flex items-center justify-between py-6">
           <p className="text-xs text-ink-faint">© {new Date().getFullYear()} Nripesh Pradhan</p>
-          <p className="font-mono text-xs text-ink-faint">Built &amp; written from scratch</p>
+          <Link
+            href={siteMetadata.siteRepo}
+            className="font-mono text-xs text-ink-faint transition-colors hover:text-accent"
+          >
+            Built &amp; written from scratch
+          </Link>
         </Container>
       </div>
     </footer>

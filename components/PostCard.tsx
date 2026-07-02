@@ -6,9 +6,11 @@ import Link from './Link';
 export default function PostCard({
   post,
   showSeries = true,
+  displayTitle,
 }: {
   post: Post;
   showSeries?: boolean;
+  displayTitle?: string;
 }) {
   return (
     <article>
@@ -19,8 +21,8 @@ export default function PostCard({
           <span aria-hidden>·</span>
           <span>{post.readingTime}</span>
         </div>
-        <h3 className="mt-2.5 font-display text-2xl font-medium text-ink transition-colors group-hover:text-accent">
-          {post.title}
+        <h3 className="mt-2.5 font-display text-xl font-medium text-ink transition-colors group-hover:text-accent">
+          {displayTitle ?? post.title}
         </h3>
         {post.summary && (
           <p className="mt-2 max-w-prose leading-relaxed text-ink-muted">{post.summary}</p>

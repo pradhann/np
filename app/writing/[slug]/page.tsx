@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import Link from '@/components/Link';
 import Mdx from '@/components/Mdx';
 import PostLayout from '@/components/layouts/MDX/PostLayout';
 import PostNavigation from '@/components/PostNavigation';
 import { formatDate } from '@/lib/dates';
-import { getAdjacentPosts, getPost, publishedPosts } from '@/lib/posts';
+import { getAdjacentPosts, getPost, publishedPosts, slugifyTag } from '@/lib/posts';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -49,7 +50,17 @@ export default async function WritingPostPage({ params }: Params) {
           {post.tags.length > 0 && (
             <>
               <span aria-hidden>·</span>
-              <span>{post.tags.join(', ')}</span>
+              <span className="flex flex-wrap gap-x-2">
+                {post.tags.map((tag) => (
+                  <Link
+                    key={tag}
+                    href={`/tags/${slugifyTag(tag)}`}
+                    className="transition-colors hover:text-accent"
+                  >
+                    {tag}
+                  </Link>
+                ))}
+              </span>
             </>
           )}
         </>

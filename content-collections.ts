@@ -8,6 +8,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
+import remarkSmartypants from 'remark-smartypants';
 
 export type TocItem = { value: string; url: string; depth: number };
 
@@ -66,9 +67,23 @@ const prettyCodeOptions = {
   defaultLang: { block: 'plaintext', inline: 'plaintext' },
 };
 
+/** Curly quotes/apostrophes for frontmatter strings, which bypass remark. */
+function smarten(s: string): string {
+  return s
+    .replace(/(\w)'(\w)/g, '$1’$2')
+    .replace(/"([^"\n]*)"/g, '“$1”')
+    .replace(/(^|[\s([{])'/g, '$1‘')
+    .replace(/'/g, '’');
+}
+
 const mdxOptions: Parameters<typeof compileMDX>[2] = {
+  // smartypants: curly quotes for a literary brand; dashes disabled (site bans em-dashes).
   // singleDollarTextMath disabled so literal dollar amounts ($6,000) are not parsed as inline math.
-  remarkPlugins: [remarkGfm, [remarkMath, { singleDollarTextMath: false }]],
+  remarkPlugins: [
+    remarkGfm,
+    [remarkSmartypants, { dashes: false }],
+    [remarkMath, { singleDollarTextMath: false }],
+  ],
   rehypePlugins: [
     rehypeMermaid,
     rehypeSlug,
@@ -97,6 +112,8 @@ const posts = defineCollection({
     const mdxCode = await compileMDX(ctx, doc, mdxOptions);
     return {
       ...doc,
+      title: smarten(doc.title),
+      summary: doc.summary ? smarten(doc.summary) : doc.summary,
       mdxCode,
       slug: doc._meta.path,
       readingTime: readingTime(doc.content).text,
@@ -126,6 +143,8 @@ const work = defineCollection({
     const mdxCode = await compileMDX(ctx, doc, mdxOptions);
     return {
       ...doc,
+      title: smarten(doc.title),
+      summary: smarten(doc.summary),
       mdxCode,
       slug: doc._meta.path,
       readingTime: readingTime(doc.content).text,

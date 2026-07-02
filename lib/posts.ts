@@ -46,6 +46,17 @@ export function getPostsByTag(tag: string): Post[] {
   return publishedPosts.filter((p) => p.tags.some((t) => slugifyTag(t) === tag));
 }
 
+/** Original display casing for each slugified tag (first occurrence wins). */
+export function getTagDisplayNames(): Record<string, string> {
+  const names: Record<string, string> = {};
+  for (const post of publishedPosts) {
+    for (const tag of post.tags) {
+      names[slugifyTag(tag)] ??= tag;
+    }
+  }
+  return names;
+}
+
 /** Adjacent posts for prev/next navigation. */
 export function getAdjacentPosts(slug: string): {
   prev?: Post;
@@ -56,5 +67,18 @@ export function getAdjacentPosts(slug: string): {
   return {
     next: publishedPosts[index - 1],
     prev: publishedPosts[index + 1],
+  };
+}
+
+/** Adjacent case studies, following the curated /work order. */
+export function getAdjacentWork(slug: string): {
+  prev?: Work;
+  next?: Work;
+} {
+  const index = publishedWork.findIndex((w) => w.slug === slug);
+  if (index === -1) return {};
+  return {
+    prev: publishedWork[index - 1],
+    next: publishedWork[index + 1],
   };
 }

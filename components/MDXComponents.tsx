@@ -8,6 +8,11 @@ import Pre from './Pre';
 export const mdxComponents = {
   a: ({ href = '', ...rest }: ComponentPropsWithoutRef<'a'>) => <Link href={href} {...rest} />,
   pre: Pre,
+  table: (props: ComponentPropsWithoutRef<'table'>) => (
+    <div className="table-wrap">
+      <table {...props} />
+    </div>
+  ),
   img: ({ alt, ...props }: ComponentPropsWithoutRef<'img'>) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img

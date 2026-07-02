@@ -5,7 +5,7 @@ import EmptyState from '@/components/EmptyState';
 import Link from '@/components/Link';
 import PageHeader from '@/components/PageHeader';
 import PostCard from '@/components/PostCard';
-import { publishedPosts } from '@/lib/posts';
+import { publishedPosts, slugifyTag } from '@/lib/posts';
 
 export const metadata: Metadata = {
   title: 'Writing',
@@ -68,38 +68,72 @@ export default function WritingPage() {
         intro="Essays on the books and ideas I keep turning over. Notes, musings, and glimpses of how I think, the world from where I stand."
       />
       {hasAny ? (
-        <div className="mt-12 space-y-16">
-          {grouped.map((group) => (
-            <section key={group.name}>
-              <header className="border-b border-border pb-4">
-                <h2 className="font-display text-2xl font-medium text-ink">{group.name}</h2>
-                <p className="mt-2 max-w-prose text-sm leading-relaxed text-ink-muted">
-                  {group.description}
-                </p>
-              </header>
-              <div className="divide-y divide-border">
-                {group.posts.map((post) => (
-                  <PostCard key={post.slug} post={post} showSeries={false} />
-                ))}
-              </div>
-            </section>
-          ))}
-          {orphans.length > 0 && (
-            <section>
-              <header className="border-b border-border pb-4">
-                <h2 className="font-display text-2xl font-medium text-ink">Essays</h2>
-                <p className="mt-2 max-w-prose text-sm leading-relaxed text-ink-muted">
-                  Standalone pieces, not part of a series.
-                </p>
-              </header>
-              <div className="divide-y divide-border">
-                {orphans.map((post) => (
-                  <PostCard key={post.slug} post={post} showSeries={false} />
-                ))}
-              </div>
-            </section>
-          )}
-        </div>
+        <>
+          <nav className="mt-8 flex flex-wrap gap-2" aria-label="Jump to series">
+            {grouped.map((group) => (
+              <a
+                key={group.name}
+                href={`#${slugifyTag(group.name)}`}
+                className="rounded-full border border-border px-3 py-1 font-mono text-xs text-ink-muted transition-colors hover:border-accent hover:text-accent"
+              >
+                {group.name} · {group.posts.length}
+              </a>
+            ))}
+            {orphans.length > 0 && (
+              <a
+                href="#essays"
+                className="rounded-full border border-border px-3 py-1 font-mono text-xs text-ink-muted transition-colors hover:border-accent hover:text-accent"
+              >
+                Essays · {orphans.length}
+              </a>
+            )}
+          </nav>
+          <div className="mt-12 space-y-16">
+            {grouped.map((group) => (
+              <section key={group.name} id={slugifyTag(group.name)}>
+                <header className="border-b border-border pb-4">
+                  <p className="eyebrow mb-2">
+                    Series · {group.posts.length} {group.posts.length === 1 ? 'essay' : 'essays'}
+                  </p>
+                  <h2 className="font-display text-3xl font-medium text-ink">{group.name}</h2>
+                  <p className="mt-2 max-w-prose text-sm leading-relaxed text-ink-muted">
+                    {group.description}
+                  </p>
+                </header>
+                <div className="divide-y divide-border">
+                  {group.posts.map((post) => (
+                    <PostCard
+                      key={post.slug}
+                      post={post}
+                      showSeries={false}
+                      displayTitle={
+                        post.title.startsWith(`${group.name}:`)
+                          ? post.title.slice(group.name.length + 1).trim()
+                          : undefined
+                      }
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
+            {orphans.length > 0 && (
+              <section id="essays">
+                <header className="border-b border-border pb-4">
+                  <p className="eyebrow mb-2">Standalone</p>
+                  <h2 className="font-display text-3xl font-medium text-ink">Essays</h2>
+                  <p className="mt-2 max-w-prose text-sm leading-relaxed text-ink-muted">
+                    Standalone pieces, not part of a series.
+                  </p>
+                </header>
+                <div className="divide-y divide-border">
+                  {orphans.map((post) => (
+                    <PostCard key={post.slug} post={post} showSeries={false} />
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+        </>
       ) : (
         <div className="mt-12">
           <EmptyState title="The first essays are on the way.">
