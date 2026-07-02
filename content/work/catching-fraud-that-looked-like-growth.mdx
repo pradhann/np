@@ -13,11 +13,11 @@ featured: true
 
 Referral fraud is a precision problem rather than a volume problem. Most fraud announces itself as a spike: something that should be rare suddenly is not, and you flag it. Referral fraud does not, because it hides inside real viral growth. The signal everyone reaches for first, referral count, is the one that fails, because the best legitimate growth and the worst fraud ring draw the same near-vertical curve. The work is separating the two without burning either.
 
-The two failure modes are symmetric, and both cost real money. Under-detect, and you pay rewards to accounts farmed with stolen identities. Over-detect, and you throttle the growth loop the campaign exists to create, because every false positive is a real referrer who stops inviting people. This piece follows the primer [Fraud Archetypes](/work/the-fraud-archetypes) and takes referral fraud end to end: the surge that exposed a blind detector, the analysis that found the real signals, the validation service we built around them, and the month it failed silently and paid out ~$150K.
+The two failure modes are symmetric, and both cost real money. Under-detect, and you pay rewards to accounts farmed with stolen identities. Over-detect, and you throttle the growth loop the campaign exists to create, because every false positive is a real referrer who stops inviting people. This piece follows the primer [Fraud Archetypes](/work/the-fraud-archetypes) and takes referral fraud end to end: the surge that exposed a blind detector, the analysis that found the real signals, the validation service we built around them, and the month it failed silently and paid out roughly $140K.
 
 ## The surge
 
-In September 2021, Nigerian referrals climbed to roughly 50,000 a day, and the referral endpoint was handling around 1,200 requests per second. From the infrastructure pov, a campaign that is working and a campaign that is being farmed look almost identical: both draw a vertical line. The difference is composition, which a requests-per-second graph cannot show. We paused the campaign temporarily to give ourselves room to look.
+In September 2021, Nigerian referrals climbed to roughly 50,000 a day, and the referral endpoint was handling around 1,200 requests per second. From the infrastructure's point of view, a campaign that is working and a campaign that is being farmed look almost identical: both draw a vertical line. The difference is composition, which a requests-per-second graph cannot show. We paused the campaign temporarily to give ourselves room to look.
 
 ![Figure 1: Daily Nigerian referrals during the September 2021 surge, by status, peaking near 50,000 per day.](/static/images/work/referral-surge.png)
 
