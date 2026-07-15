@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Nripesh Pradhan, builder of intelligence and automation systems for fintech';
+export const alt = 'Nripesh Pradhan, ML engineer and systems builder for fintech';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -33,7 +33,7 @@ export default function OpengraphImage() {
         I build the intelligence and automation that fintech runs on.
       </div>
       <div style={{ display: 'flex', fontSize: 28, color: '#1a3d3a' }}>
-        Engineer &amp; systems builder · nripeshpradhan.com
+        ML engineer &amp; systems builder · nripeshpradhan.com
       </div>
     </div>,
     size

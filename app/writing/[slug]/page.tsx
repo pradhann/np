@@ -37,6 +37,16 @@ export default async function WritingPostPage({ params }: Params) {
 
   const { prev, next } = getAdjacentPosts(slug);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.summary,
+    datePublished: post.date,
+    author: { '@type': 'Person', name: 'Nripesh Pradhan', url: 'https://nripeshpradhan.com' },
+    url: `https://nripeshpradhan.com/writing/${post.slug}`,
+  };
+
   return (
     <PostLayout
       eyebrow="Writing"
@@ -67,6 +77,10 @@ export default async function WritingPostPage({ params }: Params) {
       }
       footer={<PostNavigation prev={prev} next={next} />}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Mdx code={post.mdxCode} />
     </PostLayout>
   );

@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
 import Image from './Image';
+import KellySimulator from './KellySimulator';
 import Link from './Link';
 import Mermaid from './Mermaid';
 import Pre from './Pre';
@@ -23,6 +24,7 @@ export const mdxComponents = {
     />
   ),
   Image,
+  KellySimulator,
   Mermaid,
   mermaid: Mermaid,
 };

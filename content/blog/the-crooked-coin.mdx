@@ -1,0 +1,74 @@
+---
+title: 'The Crooked Coin'
+date: '2026-07-05'
+summary: 'You have $100K and a coin that lands heads three times out of four. How much do you bet each flip? On the Kelly criterion, ruin, and how to actually get paid for an edge.'
+tags: ['Risk', 'Probability', 'Decision-making']
+---
+
+Here is the best offer you will ever get. I have a coin that lands heads 75% of the time, and I will let you flip it a hundred times. Before each flip you bet any amount you like. Heads, I match your bet; tails, I keep it. You start with $100,000.
+
+How much do you bet?
+
+Try it before reading on.
+
+<KellySimulator mode="amount" />
+
+## The expected-value trap
+
+Every dollar you bet returns $1.50 in expectation, so if expected value is your guide, you should bet everything on every flip. Follow that advice and you almost surely end with nothing. To survive a hundred all-in flips you must win all hundred, and the chance of that is 0.75 raised to the hundredth power: a decimal point followed by twelve zeros. The expected value is still huge, because the one universe where you win every flip pays a number thirty-six digits long, and that outcome drags the average up. But you do not live in the average. You live on one path, and the first tails on that path leaves you broke and out of the game.
+
+## From amounts to fractions
+
+Play with flat bets for a while and the problems show up on their own. Bet small and you grow slowly: $10,000 a flip earns about $5,000 a flip on average, a straight line, because your winnings sit idle instead of being bet. Bet big and an early run of tails ends the game before the edge can matter. And any fixed amount stops fitting as the bankroll moves: $10,000 is a tenth of your money on the first flip but a fortieth once you reach a million. The fix is to bet a share of the bankroll rather than a dollar amount. A share keeps pace as the bankroll grows, your wins compound, and the question becomes which share.
+
+<KellySimulator />
+
+## Kelly's answer
+
+Suppose you bet a fixed fraction f of your bankroll on every flip. After n flips with W wins and n − W losses, your bankroll is
+
+$$
+B_{n} = 100{,}000 \times (1+f)^{W} \times (1-f)^{n-W}
+$$
+
+Take the log of both sides and divide by n to get the growth rate per flip:
+
+$$
+\frac{1}{n} \ln \frac{B_{n}}{100{,}000} = \frac{W}{n} \ln(1+f) + \left(1 - \frac{W}{n}\right) \ln(1-f)
+$$
+
+Over many flips the fraction of wins W/n converges to the win probability p, and the losses to q = 1 − p. So the long-run growth rate is
+
+$$
+g(f) = p \ln(1+f) + q \ln(1-f)
+$$
+
+Maximize it by setting the derivative to zero:
+
+$$
+g'(f) = \frac{p}{1+f} - \frac{q}{1-f} = 0
+$$
+
+which rearranges to p(1 − f) = q(1 + f), and solves to
+
+$$
+f^* = p - q
+$$
+
+For this coin, f\* = 0.75 − 0.25 = 0.5: bet half your bankroll, every flip. This is the Kelly criterion, from John Kelly at Bell Labs in 1956. Notice that the log was never an assumption about how much you value a dollar. It falls out of the arithmetic: returns multiply, and the thing that grows fastest under multiplication is whatever maximizes the average log.
+
+## Underbet, overbet
+
+The growth curve in the simulator carries the practical lesson. It rises from zero, peaks at 50%, and then does not decline gently. It dives, crosses zero just under 84%, and keeps falling.
+
+The two sides of the peak are not alike. Underbetting costs you growth and nothing else: at 25%, half of Kelly, you keep roughly three quarters of the optimal growth rate with far gentler swings. Overbetting costs you the game. Bet 90% and your wealth shrinks in the long run, on a coin this good, because the volatility of the big bets eats more than the edge feeds: one win followed by one loss at 90% leaves you down 81%. Run the simulator at 90% and watch. Most paths spike, collapse, and crawl along the floor. The coin never changed; only the sizing did.
+
+## The humility discount
+
+In this game you know the coin is 75%. In every real decision you estimate that number, and you estimate it with error. The shape of the curve tells you which way to lean. If your edge is smaller than you believe and you bet full Kelly on the imagined edge, you land on the steep side of the peak, where the damage is. If your edge is larger than you believe and you bet under, you give up a little growth. The mistakes are not symmetric, so the bet should not be either. This is why the people who live on this math, the card counters and the quants, mostly bet half-Kelly: a standing discount for the chance that their estimate of the edge is wrong.
+
+## Sizing is the other half
+
+Expected value answers one question: is this a good bet? It says nothing about how much to put in, and the crooked coin shows the second question can matter more than the first. Every strategy in the simulator plays the same coin, and the outcomes run from billions to bankruptcy on sizing alone.
+
+The same structure appears anywhere bets repeat and losses compound: a position in a portfolio, a startup's burn rate, a career built around one employer's stock. In each case the edge is only half the decision. The other half is what share of your bankroll rides on it, and whether you can keep playing if it fails. An edge becomes money through survival and repetition, and sizing is what buys you both.

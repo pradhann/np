@@ -5,7 +5,19 @@ import Link from '@/components/Link';
 import LinkButton from '@/components/LinkButton';
 import PostCard from '@/components/PostCard';
 import SectionHeading from '@/components/SectionHeading';
+import { siteMetadata } from '@/data/siteMetadata';
 import { featuredWork, publishedPosts } from '@/lib/posts';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteMetadata.name,
+  url: siteMetadata.siteUrl,
+  jobTitle: 'Head of Risk Intelligence & Automations',
+  worksFor: { '@type': 'Organization', name: 'Chipper Cash' },
+  description: siteMetadata.description,
+  sameAs: [siteMetadata.github, siteMetadata.linkedin],
+};
 
 const stats = [
   { value: '7+ years', label: 'building production ML systems' },
@@ -19,6 +31,10 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <Container className="pb-14 pt-24 sm:pb-16 sm:pt-32">
         <div className="max-w-3xl">
           <p className="eyebrow">ML engineer &amp; systems builder · San Francisco</p>

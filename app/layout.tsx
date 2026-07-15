@@ -38,7 +38,6 @@ export const metadata: Metadata = {
     canonical: '/',
     types: { 'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml` },
   },
-  icons: { icon: '/static/favicons/favicon.ico' },
 };
 
 export const viewport: Viewport = {

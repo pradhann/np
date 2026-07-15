@@ -157,6 +157,11 @@
     @apply h-auto max-w-full;
   }
 
+  /* Display math: scroll horizontally on narrow screens instead of overflowing the page. */
+  .prose .katex-display {
+    @apply max-w-full overflow-x-auto overflow-y-hidden py-1;
+  }
+
   /* Prose tables: scroll inside a wrapper on narrow screens; keep table semantics. */
   .prose .table-wrap {
     @apply my-7 max-w-full overflow-x-auto;

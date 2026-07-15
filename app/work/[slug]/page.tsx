@@ -31,6 +31,16 @@ export default async function WorkCaseStudyPage({ params }: Params) {
 
   const { prev, next } = getAdjacentWork(slug);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: item.title,
+    description: item.summary,
+    datePublished: item.date,
+    author: { '@type': 'Person', name: 'Nripesh Pradhan', url: 'https://nripeshpradhan.com' },
+    url: `https://nripeshpradhan.com/work/${item.slug}`,
+  };
+
   return (
     <PostLayout
       eyebrow={[item.company, item.period].filter(Boolean).join(' · ') || 'Work'}
@@ -64,6 +74,10 @@ export default async function WorkCaseStudyPage({ params }: Params) {
         </>
       }
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Mdx code={item.mdxCode} />
     </PostLayout>
   );
