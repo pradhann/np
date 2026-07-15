@@ -15,11 +15,13 @@ Try it before reading on.
 
 ## The expected-value trap
 
-Every dollar you bet returns $1.50 in expectation, so if expected value is your guide, you should bet everything on every flip. Follow that advice and you almost surely end with nothing. To survive a hundred all-in flips you must win all hundred, and the chance of that is 0.75 raised to the hundredth power: a decimal point followed by twelve zeros. The expected value is still huge, because the one universe where you win every flip pays a number thirty-six digits long, and that outcome drags the average up. But you do not live in the average. You live on one path, and the first tails on that path leaves you broke and out of the game.
+Every dollar you bet returns $1.50 in expectation, so if expected value is your only guide, you bet everything on every flip. Do that and you almost surely go broke. To survive a hundred all-in flips you have to win all hundred, and the odds of that are 0.75¹⁰⁰. Expected value still says bet everything, because the one universe where you win all hundred flips is rich enough to pull the average up. But you do not live in the average. You live on a single path, and the first tails on it wipes you out.
+
+> What keeps you alive is rational.
 
 ## From amounts to fractions
 
-Play with flat bets for a while and the problems show up on their own. Bet small and you grow slowly: $10,000 a flip earns about $5,000 a flip on average, a straight line, because your winnings sit idle instead of being bet. Bet big and an early run of tails ends the game before the edge can matter. And any fixed amount stops fitting as the bankroll moves: $10,000 is a tenth of your money on the first flip but a fortieth once you reach a million. The fix is to bet a share of the bankroll rather than a dollar amount. A share keeps pace as the bankroll grows, your wins compound, and the question becomes which share.
+A fixed bet has two problems. Bet a small amount and you are safe but slow: $10,000 a flip earns about $5,000 a flip on average, and since your winnings pile up on the side instead of being bet, the money grows in a straight line rather than compounding. Bet a large amount and a run of early tails can end the game before your edge has time to pay off. There is a deeper issue underneath both. A fixed dollar bet does not keep pace with your bankroll: $10,000 is a tenth of your money at the start, but only a hundredth once you reach a million. What you want to hold steady is not the number of dollars but the share of your bankroll at risk. Bet a fixed share and your wins compound on their own. So what fraction of your bankroll should you bet?
 
 <KellySimulator />
 
@@ -55,13 +57,13 @@ $$
 f^* = p - q
 $$
 
-For this coin, f\* = 0.75 − 0.25 = 0.5: bet half your bankroll, every flip. This is the Kelly criterion, from John Kelly at Bell Labs in 1956. Notice that the log was never an assumption about how much you value a dollar. It falls out of the arithmetic: returns multiply, and the thing that grows fastest under multiplication is whatever maximizes the average log.
+For this coin, f\* = 0.75 − 0.25 = 0.5: bet half your bankroll, every flip. This is the Kelly criterion, from John Kelly at Bell Labs in 1956.
 
 ## Underbet, overbet
 
-The growth curve in the simulator carries the practical lesson. It rises from zero, peaks at 50%, and then does not decline gently. It dives, crosses zero just under 84%, and keeps falling.
+Look again at the growth curve. It rises to a peak at the Kelly fraction, then falls, and past about 85% it drops below zero. The two sides of the peak are not the same, and the difference is survival.
 
-The two sides of the peak are not alike. Underbetting costs you growth and nothing else: at 25%, half of Kelly, you keep roughly three quarters of the optimal growth rate with far gentler swings. Overbetting costs you the game. Bet 90% and your wealth shrinks in the long run, on a coin this good, because the volatility of the big bets eats more than the edge feeds: one win followed by one loss at 90% leaves you down 81%. Run the simulator at 90% and watch. Most paths spike, collapse, and crawl along the floor. The coin never changed; only the sizing did.
+You might think a bigger bet grows faster. It does on the luckiest paths, but not on the one you are likely to live: past Kelly the swings take back more than the bigger bet adds, so the typical result grows slower, not faster. It is the all-in trap in slow motion. Set the simulator to 90% and watch most runs spike, then collapse toward the floor. Underbetting is the gentler mistake, a little less growth for much smaller swings, which is why careful players sit at half of Kelly. So Kelly is the ceiling: bet less and you trade growth for safety, bet more and you get less growth and a real risk of ruin, the one loss you cannot undo. When unsure, bet less.
 
 ## The humility discount
 
@@ -71,4 +73,4 @@ In this game you know the coin is 75%. In every real decision you estimate that 
 
 Expected value answers one question: is this a good bet? It says nothing about how much to put in, and the crooked coin shows the second question can matter more than the first. Every strategy in the simulator plays the same coin, and the outcomes run from billions to bankruptcy on sizing alone.
 
-The same structure appears anywhere bets repeat and losses compound: a position in a portfolio, a startup's burn rate, a career built around one employer's stock. In each case the edge is only half the decision. The other half is what share of your bankroll rides on it, and whether you can keep playing if it fails. An edge becomes money through survival and repetition, and sizing is what buys you both.
+The same structure shows up wherever bets repeat and losses compound: sizing a position in a portfolio, setting a startup's burn rate, staking a career on one company's stock. Having an edge is only half of the decision. The other half is how much you put behind it, and whether you survive if it goes against you. An edge only turns into money if you are still in the game to collect it. Find the edge, then bet it in a size you can survive being wrong about.

@@ -83,8 +83,8 @@ function pathFor(values: number[], y: (v: number) => number): string {
 
 // ---- growth-rate curve geometry (fraction mode) ----
 const GW = 640;
-const GH = 190;
-const GPAD = { top: 14, right: 16, bottom: 30, left: 54 };
+const GH = 214;
+const GPAD = { top: 20, right: 16, bottom: 52, left: 54 };
 const G_MIN = -0.35;
 const G_MAX = 0.16;
 
@@ -523,13 +523,13 @@ function FractionSimulator() {
 
       {/* Growth-rate curve */}
       <p className="mt-8 font-mono text-xs uppercase tracking-[0.16em] text-ink-faint">
-        Expected growth per flip, by bet fraction
+        How fast your money grows, by bet size
       </p>
       <svg
         viewBox={`0 0 ${GW} ${GH}`}
         className="mt-3 h-auto w-full"
         role="img"
-        aria-label="Expected log growth per flip as a function of bet fraction"
+        aria-label="Long-run growth rate per flip as a function of bet size. Growth peaks at the Kelly fraction of 50% and turns negative past about 85%."
       >
         <rect
           x={gx(ZERO_CROSS)}
@@ -556,11 +556,37 @@ function FractionSimulator() {
         >
           0
         </text>
+        <text
+          x={GW - GPAD.right}
+          y={gy(0) - 6}
+          textAnchor="end"
+          className="fill-ink-faint font-mono"
+          fontSize={10}
+        >
+          break even
+        </text>
+        {/* y-axis meaning */}
+        <text
+          transform={`translate(16 ${GPAD.top + 6}) rotate(-90 0 0)`}
+          textAnchor="end"
+          className="fill-ink-faint font-mono"
+          fontSize={10}
+        >
+          grows ↑
+        </text>
+        <text
+          transform={`translate(16 ${GH - GPAD.bottom - 6}) rotate(-90 0 0)`}
+          textAnchor="start"
+          className="fill-red-600/70 font-mono"
+          fontSize={10}
+        >
+          shrinks ↓
+        </text>
         {[0, 0.25, 0.5, 0.75, 1].map((f) => (
           <text
             key={f}
             x={gx(Math.min(f, 0.98))}
-            y={GH - 10}
+            y={GH - GPAD.bottom + 20}
             textAnchor="middle"
             className="fill-ink-faint font-mono"
             fontSize={10}
@@ -568,6 +594,15 @@ function FractionSimulator() {
             {(f * 100).toFixed(0)}%
           </text>
         ))}
+        <text
+          x={(GPAD.left + GW - GPAD.right) / 2}
+          y={GH - 8}
+          textAnchor="middle"
+          className="fill-ink-faint font-mono"
+          fontSize={10}
+        >
+          share of bankroll bet each flip
+        </text>
         <path d={growthPath} fill="none" className="stroke-ink" strokeWidth={1.8} />
         <circle cx={gx(KELLY)} cy={gy(growthRate(KELLY))} r={4} className="fill-accent" />
         <text
@@ -577,7 +612,7 @@ function FractionSimulator() {
           className="fill-accent font-mono"
           fontSize={11}
         >
-          Kelly · 50%
+          Kelly · fastest growth
         </text>
         <text
           x={gx(0.91)}
@@ -586,7 +621,7 @@ function FractionSimulator() {
           className="fill-red-600/80 font-mono"
           fontSize={10}
         >
-          shrinks
+          loses money
         </text>
         <line
           x1={gx(Math.min(fraction, 0.98))}
